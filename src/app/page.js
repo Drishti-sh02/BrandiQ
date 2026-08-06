@@ -885,12 +885,14 @@ export default function Home() {
                     <h3 className={styles.productTitle}>{product.title}</h3>
                     <p className={styles.productPrice}>€{product.price.toFixed(2)}</p>
                     <div className={styles.productActions}>
-                      <button
-                        className={`${styles.iconBtn} ${wishlistItems.includes(product.id) ? styles.activeHeart : ''}`}
-                        onClick={() => toggleWishlist(product.id)}
-                      >
-                        {wishlistItems.includes(product.id) ? '❤️' : '🤍'}
-                      </button>
+                      {!downloads.find(d => d.id === product.id) && (
+                        <button
+                          className={`${styles.iconBtn} ${wishlistItems.includes(product.id) ? styles.activeHeart : ''}`}
+                          onClick={() => toggleWishlist(product.id)}
+                        >
+                          {wishlistItems.includes(product.id) ? '❤️' : '🤍'}
+                        </button>
+                      )}
                       {downloads.find(d => d.id === product.id) ? (
                         <button
                           className={styles.addToCartBtn}
@@ -1037,12 +1039,14 @@ export default function Home() {
                         <img src={product.image} alt={product.title} className={styles.productImage} />
                         <h3 className={styles.productTitle}>{product.title}</h3>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1rem' }}>
-                          <button
+                          <a
+                            href={product.id === 101 ? '/THE_WORLD_IN_2050.pdf' : '#'}
+                            download={product.id === 101 ? 'THE_WORLD_IN_2050.pdf' : undefined}
                             className={styles.addToCartBtn}
-                            onClick={() => alert(`Downloading PDF for ${product.title}...`)}
+                            style={{ display: 'block', textAlign: 'center', textDecoration: 'none', lineHeight: 'normal' }}
                           >
                             Download PDF
-                          </button>
+                          </a>
                           <button
                             className={styles.addToCartBtn}
                             onClick={() => setDownloads(downloads.filter(d => d.id !== product.id))}
