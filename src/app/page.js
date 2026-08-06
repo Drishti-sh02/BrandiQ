@@ -428,7 +428,9 @@ export default function Home() {
                   <span className={styles.blogArticleTag}>Digital Marketing</span>
                   <h3 className={styles.blogArticleTitle}>7 Digital Marketing Strategies That Drive Real Results</h3>
                   <p className={styles.blogArticleDesc}>Discover proven strategies to boost your online presence, engage your audience, and grow your business.</p>
-                  <button className={styles.blogReadBtn}>READ ARTICLE →</button>
+                  <Link href="/blog/digital-marketing-strategies" passHref>
+                    <button className={styles.blogReadBtn}>READ ARTICLE →</button>
+                  </Link>
                 </div>
               </div>
               {/* Card 2 */}
@@ -438,7 +440,9 @@ export default function Home() {
                   <span className={styles.blogArticleTag}>Web Development</span>
                   <h3 className={styles.blogArticleTitle}>Web Development Trends You Should Watch in 2024</h3>
                   <p className={styles.blogArticleDesc}>Explore the latest web development trends and technologies shaping the future of the digital experience.</p>
-                  <button className={styles.blogReadBtn}>READ ARTICLE →</button>
+                  <Link href="/blog/web-development-trends" passHref>
+                    <button className={styles.blogReadBtn}>READ ARTICLE →</button>
+                  </Link>
                 </div>
               </div>
             </div>
