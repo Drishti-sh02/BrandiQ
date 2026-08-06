@@ -26,7 +26,7 @@ const Footer = ({ goToPage, openService }) => (
           </button>
         </div>
       </div>
-      
+
       <div className={styles.footerLinksContainer}>
         <div className={styles.footerColumn}>
           <h4>Quick Links</h4>
@@ -35,7 +35,7 @@ const Footer = ({ goToPage, openService }) => (
           <button className={styles.footerLink} onClick={() => goToPage(3)}>Blog <ChevronRight className={styles.footerLinkIcon} /></button>
           <button className={styles.footerLink} onClick={() => goToPage(4)}>About Us <ChevronRight className={styles.footerLinkIcon} /></button>
         </div>
-        
+
         <div className={styles.footerColumn}>
           <h4>Services</h4>
           <button className={styles.footerLink} onClick={() => openService(1)}>Digital Marketing <ChevronRight className={styles.footerLinkIcon} /></button>
@@ -45,20 +45,20 @@ const Footer = ({ goToPage, openService }) => (
           <button className={styles.footerLink} onClick={() => openService(5)}>Analytics & Reporting <ChevronRight className={styles.footerLinkIcon} /></button>
           <button className={styles.footerLink} onClick={() => openService(6)}>Social Media Marketing <ChevronRight className={styles.footerLinkIcon} /></button>
         </div>
-        
+
         <div className={styles.footerColumn}>
           <h4>Contact Us</h4>
-          
+
           <div className={styles.contactInfoBlock}>
             <div className={styles.contactInfoIcon}>
               <MapPin size={18} />
             </div>
             <div className={styles.contactInfoText}>
               <strong>Headquarters</strong>
-              <span>123 Business Street,<br/>New Delhi, India 110001</span>
+              <span>123 Business Street,<br />New Delhi, India 110001</span>
             </div>
           </div>
-          
+
           <div className={styles.contactInfoBlock}>
             <div className={styles.contactInfoIcon}>
               <Phone size={18} />
@@ -68,7 +68,7 @@ const Footer = ({ goToPage, openService }) => (
               <span>+91 98765 43210</span>
             </div>
           </div>
-          
+
           <div className={styles.contactInfoBlock}>
             <div className={styles.contactInfoIcon}>
               <Mail size={18} />
@@ -78,11 +78,11 @@ const Footer = ({ goToPage, openService }) => (
               <span>hello@brandiq.com</span>
             </div>
           </div>
-          
+
         </div>
       </div>
     </div>
-    
+
     <div className={styles.footerBottom}>
       <div className={styles.footerCopyright}>
         © 2024 Brandiq. All rights reserved.
@@ -115,7 +115,7 @@ export default function Home() {
   const [priceFilter, setPriceFilter] = useState('all');
 
   const storeProducts = [
-    { id: 101, title: 'The World of 2025', price: 120.00, image: '/TWO2025.png' },
+    { id: 101, title: 'The World of 2025', price: 120.00, image: '/TWO2025 COVER.png' },
     { id: 102, title: 'Minimalist UI Kit', price: 49.00, image: '/prod-uikit.png' },
     { id: 103, title: 'Hand-drawn Icon Set', price: 15.50, image: '/prod-icons.png' },
     { id: 104, title: 'Custom Typography', price: 22.00, image: '/prod-font.png' },
@@ -456,18 +456,18 @@ export default function Home() {
               <p className={styles.aboutGreetingText}>Get to Know Us</p>
               <h1 className={styles.aboutMainTitle}>ABOUT US</h1>
               <p className={styles.aboutBodyText}>
-                We are a team of passionate innovators, creators,<br/>
-                and problem-solvers helping businesses grow<br/>
+                We are a team of passionate innovators, creators,<br />
+                and problem-solvers helping businesses grow<br />
                 in the digital world.
               </p>
               <p className={styles.aboutBodyText}>
-                Our mission is to deliver smart, result-driven<br/>
+                Our mission is to deliver smart, result-driven<br />
                 solutions with creativity and clarity.
               </p>
               <div className={styles.aboutScribbleUnderline}></div>
             </div>
             <div className={styles.aboutHeroRight}>
-               <img src="/logo.png" alt="About Us Illustration" className={styles.aboutHeroImage} />
+              <img src="/logo.png" alt="About Us Illustration" className={styles.aboutHeroImage} />
             </div>
           </div>
 
@@ -511,7 +511,7 @@ export default function Home() {
                 Let's Work Together <span className={styles.btnArrow}>→</span>
               </button>
             </div>
-            
+
             <div className={styles.aboutValuesSide}>
               <p className={styles.aboutGreetingText}>Our Values</p>
               <div className={styles.aboutValuesGrid}>
@@ -541,16 +541,16 @@ export default function Home() {
 
           {/* Footer Banner */}
           <div className={styles.aboutFooterBanner}>
-             <div className={styles.aboutFooterLeft}>
-               <Send className={styles.aboutFooterIcon} size={40} strokeWidth={1.5} />
-               <h2>Let's Build Something Great Together!</h2>
-             </div>
-             <div className={styles.aboutFooterRight}>
-               <p>Have a project in mind or just want to say hello?<br/>We'd love to hear from you.</p>
-               <button className={styles.btnPrimary} onClick={() => goToPage(5)}>
-                 Contact Us <span className={styles.btnArrow}>→</span>
-               </button>
-             </div>
+            <div className={styles.aboutFooterLeft}>
+              <Send className={styles.aboutFooterIcon} size={40} strokeWidth={1.5} />
+              <h2>Let's Build Something Great Together!</h2>
+            </div>
+            <div className={styles.aboutFooterRight}>
+              <p>Have a project in mind or just want to say hello?<br />We'd love to hear from you.</p>
+              <button className={styles.btnPrimary} onClick={() => goToPage(5)}>
+                Contact Us <span className={styles.btnArrow}>→</span>
+              </button>
+            </div>
           </div>
 
         </div>
@@ -567,14 +567,14 @@ export default function Home() {
                 <Send size={14} />
                 <span>GET IN TOUCH</span>
               </div>
-              
+
               <h1 className={styles.contactTitle}>Contact Us</h1>
               <p className={styles.contactDesc}>
                 We'd love to hear from you! Whether you have a question, need support, or want to work together, feel free to reach out to us.
               </p>
-              
+
               <div className={styles.contactDivider}></div>
-              
+
               <div className={styles.contactInfoList}>
                 <div className={styles.contactInfoItem}>
                   <div className={styles.contactInfoIconWrapper}>
@@ -582,17 +582,17 @@ export default function Home() {
                   </div>
                   <div className={styles.contactInfoContent}>
                     <h4>Email Us</h4>
-                    <p>hello@brandiq.com<br/>We reply within 24 hours</p>
+                    <p>hello@brandiq.com<br />We reply within 24 hours</p>
                   </div>
                 </div>
-                
+
                 <div className={styles.contactInfoItem}>
                   <div className={styles.contactInfoIconWrapper}>
                     <Phone size={20} strokeWidth={1.5} />
                   </div>
                   <div className={styles.contactInfoContent}>
                     <h4>Call Us</h4>
-                    <p>+91 98765 43210<br/>Mon - Fri, 10:00 AM - 6:00 PM</p>
+                    <p>+91 98765 43210<br />Mon - Fri, 10:00 AM - 6:00 PM</p>
                   </div>
                 </div>
 
@@ -602,7 +602,7 @@ export default function Home() {
                   </div>
                   <div className={styles.contactInfoContent}>
                     <h4>Our Office</h4>
-                    <p>123 Business Street, Suite 100<br/>New Delhi, India - 110001</p>
+                    <p>123 Business Street, Suite 100<br />New Delhi, India - 110001</p>
                   </div>
                 </div>
 
@@ -633,7 +633,7 @@ export default function Home() {
                     <input type="email" placeholder="Your Email" className={styles.contactInput} />
                   </div>
                 </div>
-                
+
                 <div className={styles.inputWrapper}>
                   <Phone size={18} className={styles.inputIcon} />
                   <input type="text" placeholder="Your Phone (Optional)" className={styles.contactInput} />
@@ -685,7 +685,7 @@ export default function Home() {
               <p>Your satisfaction is our top priority.</p>
             </div>
             <div className={styles.featureIllustration}>
-               <img src="/contact-illustration.png" alt="Contact Illustration" style={{ width: '100%', maxWidth: '120px', objectFit: 'contain' }} />
+              <img src="/contact-illustration.png" alt="Contact Illustration" style={{ width: '100%', maxWidth: '120px', objectFit: 'contain' }} />
 
             </div>
           </div>
@@ -705,7 +705,7 @@ export default function Home() {
               <p style={{ color: '#666', fontSize: '1.1rem', margin: 0 }}>Welcome back, Creator!</p>
             </div>
           </div>
-          
+
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
             <div style={{ padding: '2rem', border: '1px solid #ddd', borderRadius: '12px', background: '#fafafa' }}>
               <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Account Details</h3>
@@ -713,7 +713,7 @@ export default function Home() {
               <p style={{ margin: '0.5rem 0' }}><strong>Member Since:</strong> August 2026</p>
               <p style={{ margin: '0.5rem 0' }}><strong>Plan:</strong> Lifetime Value</p>
             </div>
-            
+
             <div style={{ padding: '2rem', border: '1px solid #ddd', borderRadius: '12px', background: '#fafafa' }}>
               <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Quick Actions</h3>
               <ul style={{ listStyle: 'none', padding: 0 }}>
@@ -727,8 +727,8 @@ export default function Home() {
             </div>
           </div>
 
-          <button 
-            className="notebook-button" 
+          <button
+            className="notebook-button"
             onClick={() => { setIsSignedIn(false); goToPage(0); }}
             style={{ borderColor: '#d32f2f', color: '#d32f2f' }}
           >
@@ -789,8 +789,8 @@ export default function Home() {
               SIGN IN
             </button>
           ) : (
-            <button 
-              className={styles.signInButton} 
+            <button
+              className={styles.signInButton}
               onClick={() => goToPage(6)}
               style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.6rem', borderRadius: '50%' }}
               title="Profile"
@@ -953,11 +953,11 @@ export default function Home() {
 
             {activeOverlay === 'thankyou' && (
               <div className={`${styles.cartView} dark-theme`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100%', textAlign: 'center', padding: '2rem 1rem', backgroundColor: '#0a0a0a', color: '#fff' }}>
-                
+
                 <div style={{ position: 'relative', marginBottom: '1.5rem' }}>
-                  <div style={{ 
-                    width: '60px', height: '60px', borderRadius: '50%', border: '3px solid #fff', 
-                    display: 'flex', alignItems: 'center', justifyContent: 'center' 
+                  <div style={{
+                    width: '60px', height: '60px', borderRadius: '50%', border: '3px solid #fff',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center'
                   }}>
                     <Check size={32} strokeWidth={3} />
                   </div>
@@ -968,16 +968,16 @@ export default function Home() {
 
                 <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem', fontWeight: 'bold', letterSpacing: '-1px' }}>Thank You!</h1>
                 <p style={{ fontSize: '1rem', color: '#a0a0a0', marginBottom: '1.5rem' }}>Your payment was successful and your digital products are ready.</p>
-                
-                <button 
+
+                <button
                   onClick={() => setActiveOverlay('downloads')}
-                  style={{ 
-                    width: 'auto', 
-                    padding: '0.8rem 2rem', 
-                    fontSize: '0.9rem', 
-                    fontWeight: 'bold', 
-                    color: '#000', 
-                    backgroundColor: '#fff', 
+                  style={{
+                    width: 'auto',
+                    padding: '0.8rem 2rem',
+                    fontSize: '0.9rem',
+                    fontWeight: 'bold',
+                    color: '#000',
+                    backgroundColor: '#fff',
                     border: 'none',
                     borderRadius: '6px',
                     display: 'flex',
@@ -1037,14 +1037,14 @@ export default function Home() {
                         <img src={product.image} alt={product.title} className={styles.productImage} />
                         <h3 className={styles.productTitle}>{product.title}</h3>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1rem' }}>
-                          <button 
+                          <button
                             className={styles.addToCartBtn}
                             onClick={() => alert(`Downloading PDF for ${product.title}...`)}
                           >
                             Download PDF
                           </button>
-                          <button 
-                            className={styles.addToCartBtn} 
+                          <button
+                            className={styles.addToCartBtn}
                             onClick={() => setDownloads(downloads.filter(d => d.id !== product.id))}
                             style={{ background: 'transparent', color: '#d32f2f', border: '1px solid #d32f2f' }}
                           >
