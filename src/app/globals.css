@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;600&family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #111111;
+  --gray-light: #F5F5F5;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--gray-light); /* Background behind notebook */
+  color: var(--foreground);
+  margin: 0;
+  padding: 0;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M4 4l3.5 1L21 18.5 18.5 21 5 7.5 4 4z'></path><path d='M7.5 5l11.5 11.5'></path><path d='M5 5l2.5 2.5'></path></svg>") 4 4, auto;
+}
+
+a, button, .notebook-button, [role="button"] {
+  color: inherit;
+  text-decoration: none;
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23111111' stroke='%23111111' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M4 4l3.5 1L21 18.5 18.5 21 5 7.5 4 4z'></path><path d='M7.5 5l11.5 11.5'></path><path d='M5 5l2.5 2.5'></path></svg>") 4 4, pointer !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Notebook Typography styling */
+h1 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-weight: 300;
+  line-height: 1.6;
+  font-size: 1.125rem;
+  color: #333333;
+  margin-bottom: 1.5rem;
+}
+
+.notebook-button {
+  background: transparent;
+  border: 1px solid #111111;
+  color: #111111;
+  padding: 12px 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.notebook-button:hover {
+  background: #111111;
+  color: #FFFFFF;
+}
+
+/* Simulated hand-drawn sketch styles */
+.sketch-img {
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 1rem;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.03);
+  background: #FFFFFF;
+}
