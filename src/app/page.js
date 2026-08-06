@@ -116,7 +116,7 @@ export default function Home() {
 
   const storeProducts = [
     { id: 101, title: 'The World of 2025', price: 120.00, image: '/TWO2025 COVER.png' },
-    { id: 102, title: 'Minimalist UI Kit', price: 49.00, image: '/prod-uikit.png' },
+    { id: 102, title: 'Cloud Computing', price: 110.00, image: '/CC COVER.png' },
     { id: 103, title: 'Hand-drawn Icon Set', price: 15.50, image: '/prod-icons.png' },
     { id: 104, title: 'Custom Typography', price: 22.00, image: '/prod-font.png' },
     { id: 105, title: 'Web Dev Blueprint', price: 99.00, image: '/service-2.png' },
@@ -1044,8 +1044,8 @@ export default function Home() {
                         <h3 className={styles.productTitle}>{product.title}</h3>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1rem' }}>
                           <a
-                            href={product.id === 101 ? '/THE_WORLD_IN_2050.pdf' : '#'}
-                            download={product.id === 101 ? 'THE_WORLD_IN_2050.pdf' : undefined}
+                            href={product.id === 101 ? '/THE_WORLD_IN_2050.pdf' : product.id === 102 ? '/CLOUD COMPUTING.pdf' : '#'}
+                            download={product.id === 101 ? 'THE_WORLD_IN_2050.pdf' : product.id === 102 ? 'CLOUD COMPUTING.pdf' : undefined}
                             className={styles.addToCartBtn}
                             style={{ display: 'block', textAlign: 'center', textDecoration: 'none', lineHeight: 'normal' }}
                           >

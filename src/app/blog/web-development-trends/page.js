@@ -5,9 +5,9 @@ export default function WebDevelopmentArticle() {
   return (
     <div style={{ backgroundColor: '#1a1a1a', minHeight: '100vh', padding: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <div style={{ width: '100%', maxWidth: '900px', display: 'flex', justifyContent: 'flex-start', marginBottom: '2rem' }}>
-        <Link href="/#latest-articles" style={{ color: '#fff', textDecoration: 'none', border: '1px solid #fff', padding: '0.6rem 1.2rem', borderRadius: '6px', fontSize: '1rem', fontFamily: 'var(--font-inter), sans-serif', backgroundColor: 'transparent' }}>
+        <a href="/#latest-articles" style={{ color: '#fff', textDecoration: 'none', border: '1px solid #fff', padding: '0.6rem 1.2rem', borderRadius: '6px', fontSize: '1rem', fontFamily: 'var(--font-inter), sans-serif', backgroundColor: 'transparent', cursor: 'pointer' }}>
           ← Go Back
-        </Link>
+        </a>
       </div>
 
       <div style={{
