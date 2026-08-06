@@ -110,11 +110,12 @@ export default function Home() {
   const [activeOverlay, setActiveOverlay] = useState(null); // 'store', 'cart', 'wishlist', 'downloads'
   const [cartItems, setCartItems] = useState([]);
   const [wishlistItems, setWishlistItems] = useState([]);
+  const [downloads, setDownloads] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [priceFilter, setPriceFilter] = useState('all');
 
   const storeProducts = [
-    { id: 101, title: 'Pro E-book Template', price: 29.99, image: '/prod-ebook.png' },
+    { id: 101, title: 'The World of 2025', price: 120.00, image: '/TWO2025.png' },
     { id: 102, title: 'Minimalist UI Kit', price: 49.00, image: '/prod-uikit.png' },
     { id: 103, title: 'Hand-drawn Icon Set', price: 15.50, image: '/prod-icons.png' },
     { id: 104, title: 'Custom Typography', price: 22.00, image: '/prod-font.png' },
@@ -246,6 +247,13 @@ export default function Home() {
   };
 
   const handlePayNow = () => {
+    const newDownloads = [...downloads];
+    cartItems.forEach(item => {
+      if (!newDownloads.find(d => d.id === item.id)) {
+        newDownloads.push(item);
+      }
+    });
+    setDownloads(newDownloads);
     setCartItems([]);
     setActiveOverlay('thankyou');
   };
@@ -687,10 +695,45 @@ export default function Home() {
     {
       title: "Profile",
       content: (
-        <div>
-          <h2>Your Profile</h2>
-          <p>Welcome back! Here are your saved items and account details.</p>
-          <button className="notebook-button" onClick={() => setIsSignedIn(false)}>Sign Out</button>
+        <div style={{ padding: '2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '2rem', gap: '1.5rem' }}>
+            <div style={{ width: '80px', height: '80px', borderRadius: '50%', backgroundColor: '#eee', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <UserIcon size={40} color="#555" />
+            </div>
+            <div>
+              <h2 style={{ fontSize: '2.5rem', marginBottom: '0.5rem', fontWeight: 'bold' }}>Your Profile</h2>
+              <p style={{ color: '#666', fontSize: '1.1rem', margin: 0 }}>Welcome back, Creator!</p>
+            </div>
+          </div>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
+            <div style={{ padding: '2rem', border: '1px solid #ddd', borderRadius: '12px', background: '#fafafa' }}>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Account Details</h3>
+              <p style={{ margin: '0.5rem 0' }}><strong>Email:</strong> user@example.com</p>
+              <p style={{ margin: '0.5rem 0' }}><strong>Member Since:</strong> August 2026</p>
+              <p style={{ margin: '0.5rem 0' }}><strong>Plan:</strong> Lifetime Value</p>
+            </div>
+            
+            <div style={{ padding: '2rem', border: '1px solid #ddd', borderRadius: '12px', background: '#fafafa' }}>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Quick Actions</h3>
+              <ul style={{ listStyle: 'none', padding: 0 }}>
+                <li style={{ marginBottom: '1rem' }}>
+                  <button onClick={() => setActiveOverlay('downloads')} style={{ background: 'none', border: 'none', color: '#0066cc', fontSize: '1.1rem', cursor: 'pointer', textDecoration: 'underline', padding: 0 }}>Access My Downloads</button>
+                </li>
+                <li style={{ marginBottom: '1rem' }}>
+                  <button onClick={() => setActiveOverlay('wishlist')} style={{ background: 'none', border: 'none', color: '#0066cc', fontSize: '1.1rem', cursor: 'pointer', textDecoration: 'underline', padding: 0 }}>View Wishlist ({wishlistItems.length})</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <button 
+            className="notebook-button" 
+            onClick={() => { setIsSignedIn(false); goToPage(0); }}
+            style={{ borderColor: '#d32f2f', color: '#d32f2f' }}
+          >
+            Sign Out
+          </button>
         </div>
       )
     }
@@ -746,8 +789,13 @@ export default function Home() {
               SIGN IN
             </button>
           ) : (
-            <button className={styles.signInButton} onClick={() => goToPage(6)}>
-              PROFILE
+            <button 
+              className={styles.signInButton} 
+              onClick={() => goToPage(6)}
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.6rem', borderRadius: '50%' }}
+              title="Profile"
+            >
+              <UserIcon size={20} />
             </button>
           )}
         </div>
@@ -835,7 +883,7 @@ export default function Home() {
                     <div className={styles.stickyPin}></div>
                     <img src={product.image} alt={product.title} className={styles.productImage} />
                     <h3 className={styles.productTitle}>{product.title}</h3>
-                    <p className={styles.productPrice}>${product.price.toFixed(2)}</p>
+                    <p className={styles.productPrice}>€{product.price.toFixed(2)}</p>
                     <div className={styles.productActions}>
                       <button
                         className={`${styles.iconBtn} ${wishlistItems.includes(product.id) ? styles.activeHeart : ''}`}
@@ -843,12 +891,22 @@ export default function Home() {
                       >
                         {wishlistItems.includes(product.id) ? '❤️' : '🤍'}
                       </button>
-                      <button
-                        className={styles.addToCartBtn}
-                        onClick={() => toggleCart(product)}
-                      >
-                        {cartItems.find(item => item.id === product.id) ? 'Remove' : 'Add to Cart'}
-                      </button>
+                      {downloads.find(d => d.id === product.id) ? (
+                        <button
+                          className={styles.addToCartBtn}
+                          onClick={() => setActiveOverlay('downloads')}
+                          style={{ backgroundColor: '#2e7d32', color: '#fff', borderColor: '#2e7d32' }}
+                        >
+                          Purchased
+                        </button>
+                      ) : (
+                        <button
+                          className={styles.addToCartBtn}
+                          onClick={() => toggleCart(product)}
+                        >
+                          {cartItems.find(item => item.id === product.id) ? 'Remove' : 'Add to Cart'}
+                        </button>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -969,7 +1027,34 @@ export default function Home() {
             {activeOverlay === 'downloads' && (
               <div className={styles.downloadsView}>
                 <h1 className={styles.storeSectionTitle}>Your Downloads</h1>
-                <p className={styles.emptyStateMsg}>You haven't purchased any items yet.</p>
+                {downloads.length === 0 ? (
+                  <p className={styles.emptyStateMsg}>You haven't purchased any items yet.</p>
+                ) : (
+                  <div className={styles.productGrid}>
+                    {downloads.map(product => (
+                      <div key={product.id} className={styles.productStickyNote}>
+                        <div className={styles.stickyPin}></div>
+                        <img src={product.image} alt={product.title} className={styles.productImage} />
+                        <h3 className={styles.productTitle}>{product.title}</h3>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1rem' }}>
+                          <button 
+                            className={styles.addToCartBtn}
+                            onClick={() => alert(`Downloading PDF for ${product.title}...`)}
+                          >
+                            Download PDF
+                          </button>
+                          <button 
+                            className={styles.addToCartBtn} 
+                            onClick={() => setDownloads(downloads.filter(d => d.id !== product.id))}
+                            style={{ background: 'transparent', color: '#d32f2f', border: '1px solid #d32f2f' }}
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
           </div>
