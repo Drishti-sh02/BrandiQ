@@ -2,9 +2,103 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import NotebookLayout from '@/components/NotebookLayout';
-import { Users, Rocket, Award, Heart, Target, Lightbulb, Handshake, BarChart3, Send, Mail, Phone, MapPin, MessageSquare, User as UserIcon, Clock, ShieldCheck, Tag, PenLine, ChevronDown } from 'lucide-react';
+import { Users, Rocket, Award, Heart, Target, Lightbulb, Handshake, BarChart3, Send, Mail, Phone, MapPin, MessageSquare, User as UserIcon, Clock, ShieldCheck, Tag, PenLine, ChevronDown, ChevronRight, Check, Sparkles, Shield, CloudDownload, Infinity as InfinityIcon, ArrowRight } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import styles from './page.module.css';
+
+const Footer = ({ goToPage, openService }) => (
+  <footer id="footer" className={styles.globalFooter}>
+    <div className={styles.footerTop}>
+      <div className={styles.footerBrand}>
+        <img src="/logo.png" alt="BRANDIQ" className={styles.footerLogo} />
+        <p>Premium digital products designed to inspire, educate, and help you grow. One purchase, lifetime value.</p>
+        <div className={styles.footerSocials}>
+          <button className={styles.socialIconBtn} aria-label="WhatsApp">
+            <FaWhatsapp size={18} />
+          </button>
+          <button className={styles.socialIconBtn} aria-label="Email">
+            <Mail size={18} />
+          </button>
+          <button className={styles.socialIconBtn} aria-label="Call">
+            <Phone size={18} />
+          </button>
+        </div>
+      </div>
+      
+      <div className={styles.footerLinksContainer}>
+        <div className={styles.footerColumn}>
+          <h4>Quick Links</h4>
+          <button className={styles.footerLink} onClick={() => goToPage(0)}>Home <ChevronRight className={styles.footerLinkIcon} /></button>
+          <button className={styles.footerLink} onClick={() => goToPage(2)}>Products <ChevronRight className={styles.footerLinkIcon} /></button>
+          <button className={styles.footerLink} onClick={() => goToPage(3)}>Blog <ChevronRight className={styles.footerLinkIcon} /></button>
+          <button className={styles.footerLink} onClick={() => goToPage(4)}>About Us <ChevronRight className={styles.footerLinkIcon} /></button>
+        </div>
+        
+        <div className={styles.footerColumn}>
+          <h4>Services</h4>
+          <button className={styles.footerLink} onClick={() => openService(1)}>Digital Marketing <ChevronRight className={styles.footerLinkIcon} /></button>
+          <button className={styles.footerLink} onClick={() => openService(2)}>Web Development <ChevronRight className={styles.footerLinkIcon} /></button>
+          <button className={styles.footerLink} onClick={() => openService(3)}>Shopify Development <ChevronRight className={styles.footerLinkIcon} /></button>
+          <button className={styles.footerLink} onClick={() => openService(4)}>Branding & Creative <ChevronRight className={styles.footerLinkIcon} /></button>
+          <button className={styles.footerLink} onClick={() => openService(5)}>Analytics & Reporting <ChevronRight className={styles.footerLinkIcon} /></button>
+          <button className={styles.footerLink} onClick={() => openService(6)}>Social Media Marketing <ChevronRight className={styles.footerLinkIcon} /></button>
+        </div>
+        
+        <div className={styles.footerColumn}>
+          <h4>Contact Us</h4>
+          
+          <div className={styles.contactInfoBlock}>
+            <div className={styles.contactInfoIcon}>
+              <MapPin size={18} />
+            </div>
+            <div className={styles.contactInfoText}>
+              <strong>Headquarters</strong>
+              <span>123 Business Street,<br/>New Delhi, India 110001</span>
+            </div>
+          </div>
+          
+          <div className={styles.contactInfoBlock}>
+            <div className={styles.contactInfoIcon}>
+              <Phone size={18} />
+            </div>
+            <div className={styles.contactInfoText}>
+              <strong>Phone</strong>
+              <span>+91 98765 43210</span>
+            </div>
+          </div>
+          
+          <div className={styles.contactInfoBlock}>
+            <div className={styles.contactInfoIcon}>
+              <Mail size={18} />
+            </div>
+            <div className={styles.contactInfoText}>
+              <strong>Email</strong>
+              <span>hello@brandiq.com</span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+    <div className={styles.footerBottom}>
+      <div className={styles.footerCopyright}>
+        © 2024 Brandiq. All rights reserved.
+      </div>
+      <div className={styles.footerBottomLinks}>
+        <Link href="/privacy-policy" style={{ textDecoration: 'none' }}>
+          <button style={{ cursor: 'pointer' }}>Privacy Policy</button>
+        </Link>
+        <span className={styles.footerBottomSeparator}>|</span>
+        <Link href="/terms-of-service" style={{ textDecoration: 'none' }}>
+          <button style={{ cursor: 'pointer' }}>Terms of Service</button>
+        </Link>
+      </div>
+    </div>
+  </footer>
+);
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -141,6 +235,19 @@ export default function Home() {
 
   const goToPage = (index) => {
     setCurrentPage(index);
+  };
+
+  const openServiceFromFooter = (id) => {
+    const service = servicesData.find(s => s.id === id);
+    if (service) {
+      goToPage(1); // Index 1 is the Services page
+      setActiveService(service);
+    }
+  };
+
+  const handlePayNow = () => {
+    setCartItems([]);
+    setActiveOverlay('thankyou');
   };
 
   const navigateService = (direction) => {
@@ -526,8 +633,8 @@ export default function Home() {
 
                 <div className={styles.inputWrapper}>
                   <Tag size={18} className={styles.inputIcon} />
-                  <select className={styles.contactSelect}>
-                    <option value="" disabled selected>Subject</option>
+                  <select className={styles.contactSelect} defaultValue="">
+                    <option value="" disabled>Subject</option>
                     <option value="general">General Inquiry</option>
                     <option value="support">Support</option>
                     <option value="collaboration">Collaboration</option>
@@ -648,7 +755,10 @@ export default function Home() {
 
       {/* Notebook Environment */}
       <NotebookLayout currentPageIndex={currentPage} pages={pages}>
-        {pages[currentPage].content}
+        <div style={{ minHeight: '100%', display: 'flex', flexDirection: 'column' }}>
+          {pages[currentPage].content}
+          <Footer goToPage={goToPage} openService={openServiceFromFooter} />
+        </div>
       </NotebookLayout>
 
       {/* Full Screen Overlay for Active Service */}
@@ -776,10 +886,60 @@ export default function Home() {
                     </div>
                     <div className={styles.subtotalSection}>
                       <h2>Subtotal: ${cartSubtotal}</h2>
-                      <button className={styles.payNowBtn}>Pay Now</button>
+                      <button className={styles.payNowBtn} onClick={handlePayNow}>Pay Now</button>
                     </div>
                   </div>
                 )}
+              </div>
+            )}
+
+            {activeOverlay === 'thankyou' && (
+              <div className={`${styles.cartView} dark-theme`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100%', textAlign: 'center', padding: '2rem 1rem', backgroundColor: '#0a0a0a', color: '#fff' }}>
+                
+                <div style={{ position: 'relative', marginBottom: '1.5rem' }}>
+                  <div style={{ 
+                    width: '60px', height: '60px', borderRadius: '50%', border: '3px solid #fff', 
+                    display: 'flex', alignItems: 'center', justifyContent: 'center' 
+                  }}>
+                    <Check size={32} strokeWidth={3} />
+                  </div>
+                  <div style={{ position: 'absolute', top: '-10px', right: '-20px', color: '#fff', opacity: 0.8 }}><Sparkles size={18} /></div>
+                  <div style={{ position: 'absolute', bottom: '5px', left: '-25px', color: '#fff', opacity: 0.6 }}><Sparkles size={14} /></div>
+                  <div style={{ position: 'absolute', top: '15px', left: '-15px', color: '#fff', opacity: 0.4 }}><Sparkles size={10} /></div>
+                </div>
+
+                <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem', fontWeight: 'bold', letterSpacing: '-1px' }}>Thank You!</h1>
+                <p style={{ fontSize: '1rem', color: '#a0a0a0', marginBottom: '1.5rem' }}>Your payment was successful and your digital products are ready.</p>
+                
+                <button 
+                  onClick={() => setActiveOverlay('downloads')}
+                  style={{ 
+                    width: 'auto', 
+                    padding: '0.8rem 2rem', 
+                    fontSize: '0.9rem', 
+                    fontWeight: 'bold', 
+                    color: '#000', 
+                    backgroundColor: '#fff', 
+                    border: 'none',
+                    borderRadius: '6px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.8rem',
+                    textTransform: 'uppercase',
+                    marginBottom: '2.5rem',
+                    cursor: 'pointer',
+                    letterSpacing: '1px'
+                  }}
+                >
+                  Go to Downloads <ArrowRight size={18} />
+                </button>
+
+                <div style={{ display: 'flex', alignItems: 'center', width: '100%', maxWidth: '600px', marginBottom: '1rem' }}>
+                  <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(255,255,255,0.1)' }}></div>
+                  <Heart size={14} color="rgba(255,255,255,0.3)" style={{ margin: '0 1rem' }} />
+                  <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(255,255,255,0.1)' }}></div>
+                </div>
+
               </div>
             )}
 
@@ -815,6 +975,7 @@ export default function Home() {
           </div>
         </div>
       )}
+
     </main>
   );
 }
