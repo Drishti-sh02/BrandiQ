@@ -779,7 +779,7 @@ export default function Home() {
           <img 
             src="/logo2.png" 
             alt="BrandiQ Logo" 
-            style={{ height: '30px', marginRight: '1rem', cursor: 'pointer', objectFit: 'contain' }} 
+            style={{ height: '60px', marginRight: '1rem', cursor: 'pointer', objectFit: 'contain' }} 
             onClick={() => goToPage(0)}
           />
           {navItems.map((item) => (
