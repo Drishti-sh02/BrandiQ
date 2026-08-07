@@ -771,46 +771,66 @@ export default function Home() {
             </div>
 
             <div className={styles.productsContentRight} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <h3 className={styles.productsSubtitle}>Account Details</h3>
-              <div className={styles.productsBodyText}>
-                {isEditingProfile ? (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', maxWidth: '350px' }}>
-                    <div>
-                      <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.2rem' }}>Name</label>
-                      <input type="text" value={profileData.name} onChange={(e) => setProfileData({ ...profileData, name: e.target.value })} style={{ width: '100%', padding: '0.5rem', border: '1px solid #111' }} />
+              <div style={{ 
+                border: '2px solid #111', 
+                padding: '3rem', 
+                backgroundColor: '#fff',
+                boxShadow: '8px 8px 0px 0px #111',
+                maxWidth: '450px',
+                width: '100%'
+              }}>
+                <h3 className={styles.productsSubtitle} style={{ fontSize: '1.5rem', marginBottom: '2rem', borderBottom: '2px solid #111', paddingBottom: '1rem', letterSpacing: '1px', textTransform: 'uppercase' }}>Account Details</h3>
+                <div className={styles.productsBodyText}>
+                  {isEditingProfile ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+                      <div>
+                        <label style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold', color: '#666', display: 'block', marginBottom: '0.4rem' }}>Name</label>
+                        <input type="text" value={profileData.name} onChange={(e) => setProfileData({ ...profileData, name: e.target.value })} style={{ width: '100%', padding: '0.8rem', border: '2px solid #111', fontSize: '1rem', fontFamily: 'inherit', outline: 'none' }} />
+                      </div>
+                      <div>
+                        <label style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold', color: '#666', display: 'block', marginBottom: '0.4rem' }}>Date of Birth</label>
+                        <input type="date" value={profileData.dob} onChange={(e) => setProfileData({ ...profileData, dob: e.target.value })} style={{ width: '100%', padding: '0.8rem', border: '2px solid #111', fontSize: '1rem', fontFamily: 'inherit', outline: 'none' }} />
+                      </div>
+                      <div>
+                        <label style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold', color: '#666', display: 'block', marginBottom: '0.4rem' }}>Email</label>
+                        <input type="email" value={profileData.email} disabled style={{ width: '100%', padding: '0.8rem', border: '2px solid #ddd', background: '#f5f5f5', color: '#888', fontSize: '1rem', fontFamily: 'inherit' }} />
+                      </div>
+                      <div>
+                        <label style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold', color: '#666', display: 'block', marginBottom: '0.4rem' }}>Status</label>
+                        <select value={profileData.status} onChange={(e) => setProfileData({ ...profileData, status: e.target.value })} style={{ width: '100%', padding: '0.8rem', border: '2px solid #111', fontSize: '1rem', fontFamily: 'inherit', outline: 'none', cursor: 'pointer' }}>
+                          <option value="Student">Student</option>
+                          <option value="Employee">Employee</option>
+                        </select>
+                      </div>
+                      <button className={styles.btnPrimary} onClick={() => setIsEditingProfile(false)} style={{ marginTop: '1rem', width: '100%', justifyContent: 'center' }}>
+                        SAVE CHANGES <span className={styles.btnArrow}>→</span>
+                      </button>
                     </div>
-                    <div>
-                      <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.2rem' }}>Date of Birth</label>
-                      <input type="date" value={profileData.dob} onChange={(e) => setProfileData({ ...profileData, dob: e.target.value })} style={{ width: '100%', padding: '0.5rem', border: '1px solid #111' }} />
+                  ) : (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold', color: '#666', marginBottom: '0.3rem' }}>Name</span>
+                        <span style={{ fontSize: '1.2rem', color: '#111', fontWeight: '500' }}>{profileData.name}</span>
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold', color: '#666', marginBottom: '0.3rem' }}>Date of Birth</span>
+                        <span style={{ fontSize: '1.2rem', color: '#111', fontWeight: '500' }}>{profileData.dob}</span>
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold', color: '#666', marginBottom: '0.3rem' }}>Email</span>
+                        <span style={{ fontSize: '1.2rem', color: '#111', fontWeight: '500' }}>{profileData.email}</span>
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold', color: '#666', marginBottom: '0.3rem' }}>Status</span>
+                        <span style={{ fontSize: '1.2rem', color: '#111', fontWeight: '500' }}>{profileData.status}</span>
+                      </div>
+                      
+                      <button className={styles.btnSecondary} onClick={() => setIsEditingProfile(true)} style={{ marginTop: '1rem', width: 'fit-content' }}>
+                        EDIT PROFILE <span className={styles.btnArrow}>→</span>
+                      </button>
                     </div>
-                    <div>
-                      <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.2rem' }}>Email</label>
-                      <input type="email" value={profileData.email} disabled style={{ width: '100%', padding: '0.5rem', border: '1px solid #ddd', background: '#f5f5f5', color: '#888' }} />
-                    </div>
-                    <div>
-                      <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.2rem' }}>Status</label>
-                      <select value={profileData.status} onChange={(e) => setProfileData({ ...profileData, status: e.target.value })} style={{ width: '100%', padding: '0.5rem', border: '1px solid #111' }}>
-                        <option value="Student">Student</option>
-                        <option value="Employee">Employee</option>
-                      </select>
-                    </div>
-                    <button className={styles.btnPrimary} onClick={() => setIsEditingProfile(false)} style={{ marginTop: '1rem', width: 'fit-content' }}>
-                      SAVE CHANGES <span className={styles.btnArrow}>→</span>
-                    </button>
-                  </div>
-                ) : (
-                  <>
-                    <p style={{ lineHeight: '1.8' }}>
-                      <strong>Name:</strong> {profileData.name}<br />
-                      <strong>Date of Birth:</strong> {profileData.dob}<br />
-                      <strong>Email:</strong> {profileData.email}<br />
-                      <strong>Status:</strong> {profileData.status}
-                    </p>
-                    <button onClick={() => setIsEditingProfile(true)} style={{ background: 'none', border: 'none', color: '#111', textDecoration: 'underline', cursor: 'pointer', padding: 0, marginTop: '0.5rem', fontWeight: 'bold' }}>
-                      Edit Profile
-                    </button>
-                  </>
-                )}
+                  )}
+                </div>
               </div>
             </div>
           </div>
