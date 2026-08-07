@@ -900,11 +900,6 @@ export default function Home() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
-                <select className={styles.storePriceFilter} value={priceFilter} onChange={(e) => setPriceFilter(e.target.value)}>
-                  <option value="all">All Prices</option>
-                  <option value="under50">Under $50</option>
-                  <option value="over50">$50 and up</option>
-                </select>
               </div>
             )}
 
