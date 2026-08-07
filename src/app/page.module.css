@@ -2274,3 +2274,74 @@
     overflow-x: auto;
   }
 }
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .navLinks {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .heroPageWrapper,
+  .aboutPageWrapper,
+  .servicesPageWrapper,
+  .contactPageWrapper,
+  .productsPageWrapper {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    height: auto;
+  }
+
+  .heroMainTitle,
+  .aboutMainTitle,
+  .servicesMainTitle,
+  .contactMainTitle,
+  .productsMainTitle {
+    font-size: 3rem !important;
+    text-align: left;
+  }
+
+  .greetingText,
+  .aboutGreetingText,
+  .servicesGreetingText,
+  .productsGreetingText {
+    font-size: 1.2rem;
+    margin-right: 0;
+    align-self: flex-start;
+  }
+
+  .heroContentLeft,
+  .aboutContentLeft,
+  .servicesContentLeft,
+  .contactContentLeft,
+  .productsContentLeft {
+    padding-right: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .servicesGrid, .storeGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .aboutTextContainer {
+    width: 100%;
+    transform: none;
+  }
+
+  .aboutValuesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .contactContentRight form {
+    width: 100%;
+    margin-top: 2rem;
+  }
+}
