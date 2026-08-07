@@ -1085,18 +1085,6 @@ export default function Home() {
 
             {activeOverlay === 'product_details' && selectedProduct && (
               <div className={styles.productDetailsWrapper}>
-                <div className={styles.pdTopNav}>
-                  <button className={styles.pdBackBtn} onClick={() => setActiveOverlay('store')}>
-                    ← Back to Store
-                  </button>
-                  <div className={styles.pdNavRight}>
-                    <button onClick={() => setActiveOverlay('downloads')}>Downloads ({downloads.length})</button>
-                    <button onClick={() => setActiveOverlay('wishlist')}>Wishlist ({wishlistItems.length})</button>
-                    <button onClick={() => setActiveOverlay('cart')}>Cart ({cartItems.length})</button>
-                    <button className={styles.pdProfileBtn}>👤</button>
-                  </div>
-                </div>
-
                 <div className={styles.pdLayout}>
                   <div className={styles.pdLeftCol}>
                     <div className={styles.pdCoverWrapper}>
