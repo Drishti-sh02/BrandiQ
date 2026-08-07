@@ -747,10 +747,25 @@ export default function Home() {
             <div className={styles.productsContentLeft}>
               <p className={styles.productsGreetingText}>Welcome back, Creator!</p>
               <h1 className={styles.productsMainTitle}>YOUR PROFILE</h1>
+              
+              <div style={{ margin: '3rem 0' }}>
+                <UserIcon size={180} color="#111" strokeWidth={1} />
+              </div>
+
+              <div className={styles.productsButtonGroup}>
+                <button className={styles.btnSecondary} onClick={() => { setIsSignedIn(false); goToPage(0); }} style={{ borderColor: '#d32f2f', color: '#d32f2f' }}>
+                  <span className={styles.btnIcon}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d32f2f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" x2="9" y1="12" y2="12" /></svg>
+                  </span> SIGN OUT <span className={styles.btnArrow}>→</span>
+                </button>
+              </div>
+            </div>
+
+            <div className={styles.productsContentRight} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <h3 className={styles.productsSubtitle}>Account Details</h3>
               <div className={styles.productsBodyText}>
                 {isEditingProfile ? (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', maxWidth: '300px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', maxWidth: '350px' }}>
                     <div>
                       <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.2rem' }}>Name</label>
                       <input type="text" value={profileData.name} onChange={(e) => setProfileData({ ...profileData, name: e.target.value })} style={{ width: '100%', padding: '0.5rem', border: '1px solid #111' }} />
@@ -788,18 +803,6 @@ export default function Home() {
                   </>
                 )}
               </div>
-
-              <div className={styles.productsButtonGroup} style={{ marginTop: '2rem' }}>
-                <button className={styles.btnSecondary} onClick={() => { setIsSignedIn(false); goToPage(0); }} style={{ borderColor: '#d32f2f', color: '#d32f2f' }}>
-                  <span className={styles.btnIcon}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d32f2f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" x2="9" y1="12" y2="12" /></svg>
-                  </span> SIGN OUT <span className={styles.btnArrow}>→</span>
-                </button>
-              </div>
-            </div>
-
-            <div className={styles.productsContentRight} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <UserIcon size={240} color="#111" strokeWidth={1} />
             </div>
           </div>
         </div>
