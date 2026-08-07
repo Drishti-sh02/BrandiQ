@@ -2372,4 +2372,58 @@
     gap: 0.5rem;
     align-items: flex-start;
   }
+  
+  /* Additional full-site alignment fixes */
+  .productsTopSection {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .blogPageWrapper {
+    padding: 1rem;
+    height: auto;
+  }
+  
+  .blogHero {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    height: auto;
+  }
+  
+  .blogMainTitle {
+    font-size: 2.5rem !important;
+  }
+  
+  .blogArticlesGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .aboutFooterBanner {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 2rem 1rem;
+  }
+  
+  .aboutFooterLeft {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .pdLayout {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .pdLeftCol, .pdRightCol {
+    padding: 1rem 0;
+  }
+  
+  .pdOverlay {
+    padding: 10px;
+  }
+  
+  .contactInfoBlock {
+    align-items: flex-start;
+  }
 }
