@@ -117,8 +117,44 @@ export default function Home() {
   const [previewImage, setPreviewImage] = useState(null);
 
   const storeProducts = [
-    { id: 101, title: 'The World of 2025', price: 120.00, image: '/TWO2025 COVER.png' },
-    { id: 102, title: 'Cloud Computing', price: 110.00, image: '/CC COVER.png' },
+    { 
+      id: 101, 
+      title: 'The World of 2025', 
+      subtitle: 'AI, Robots & Human Civilization',
+      rating: '★★★★★ 4.9 (320+ Readers)',
+      currency: '€',
+      price: 120.00, 
+      image: '/TWO2025 COVER.png',
+      description: (
+        <>
+          <p className={styles.pdDescription}>Step into the future and discover how technology could reshape the world by 2050.</p>
+          <p className={styles.pdDescription}>The World in 2050 is a beautifully designed visual eBook that explores the innovations expected to transform everyday life over the coming decades. From Artificial Intelligence and humanoid robots to smart cities, quantum computing, biotechnology, space exploration, and sustainable technologies, this guide explains complex ideas in a simple, engaging way.</p>
+          <p className={styles.pdDescription}>Designed for students, technology enthusiasts, professionals, and curious minds, the book combines illustrations, real-world examples, timelines, and easy-to-understand explanations to help readers understand not only what the future may look like, but also why today&apos;s innovations matter. It explores how AI systems, robotics, automation, connected technologies, and responsible innovation may shape society while also discussing the opportunities and ethical challenges they bring.</p>
+          <p className={styles.pdDescription} style={{ marginBottom: '2rem' }}>Whether you&apos;re fascinated by emerging technologies or simply want a glimpse into tomorrow&apos;s world, this eBook offers an inspiring and educational journey into the future.</p>
+        </>
+      ),
+      perfectFor: ['Students', 'AI Enthusiasts', 'Developers', 'Entrepreneurs', 'Technology Professionals', 'Future Thinkers', 'Science Lovers']
+    },
+    { 
+      id: 102, 
+      title: 'Cloud Computing Blueprint', 
+      subtitle: 'A Beginner\'s Guide to Cloud Technologies, Architecture & Real-World Applications',
+      rating: '⭐⭐⭐⭐⭐ 4.9 (180+ Readers)',
+      currency: '₹',
+      price: 249.00, 
+      image: '/CC COVER.png',
+      description: (
+        <>
+          <p className={styles.pdDescription}>Master one of today&apos;s most in-demand technologies with Cloud Computing Blueprint—a practical guide designed for students, aspiring developers, IT professionals, and anyone beginning their cloud computing journey.</p>
+          <p className={styles.pdDescription}>This eBook explains cloud computing from the ground up using simple language, real-world examples, and structured chapters. You&apos;ll learn how cloud services work, explore different cloud service and deployment models, understand virtualization, storage, networking, cloud infrastructure, and discover how leading platforms such as AWS, Microsoft Azure, and Google Cloud power modern applications.</p>
+          <p className={styles.pdDescription} style={{ marginBottom: '2rem' }}>Whether you&apos;re preparing for interviews, building your first cloud project, or strengthening your technical foundation, this guide provides a clear roadmap to understanding cloud technologies and their real-world applications.</p>
+        </>
+      ),
+      whatYouWillLearn: [
+        'Cloud Computing Fundamentals', 'IaaS, PaaS & SaaS', 'Public, Private & Hybrid Cloud', 'Cloud Infrastructure', 'Data Centers & Virtualization', 'Cloud Storage & Networking', 'AWS, Azure & Google Cloud', 'Cloud Security', 'Real-World Cloud Applications', 'Career Opportunities & Certifications'
+      ],
+      perfectFor: ['Computer Science Students', 'Beginners in Cloud Computing', 'Software Developers', 'IT Professionals', 'DevOps Learners', 'Engineering Students', 'Certification Aspirants']
+    },
     { id: 103, title: 'Hand-drawn Icon Set', price: 15.50, image: '/prod-icons.png' },
     { id: 104, title: 'Custom Typography', price: 22.00, image: '/prod-font.png' },
     { id: 105, title: 'Web Dev Blueprint', price: 99.00, image: '/service-2.png' },
@@ -1127,10 +1163,10 @@ export default function Home() {
 
                   <div className={styles.pdRightCol}>
                     <h1 className={styles.pdTitle}>{selectedProduct.title}</h1>
-                    <h3 className={styles.pdSubtitle}>AI, Robots & Human Civilization</h3>
-                    <div className={styles.pdRating}>★★★★★ 4.9 (320+ Readers)</div>
+                    {selectedProduct.subtitle && <h3 className={styles.pdSubtitle}>{selectedProduct.subtitle}</h3>}
+                    {selectedProduct.rating && <div className={styles.pdRating}>{selectedProduct.rating}</div>}
                     <div className={styles.pdPriceRow}>
-                      <span className={styles.pdPrice}>€{selectedProduct.price.toFixed(2)}</span>
+                      <span className={styles.pdPrice}>{selectedProduct.currency || '€'}{selectedProduct.price.toFixed(2)}</span>
                       <span className={styles.pdBadge}>
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                         Instant Download
@@ -1138,22 +1174,34 @@ export default function Home() {
                     </div>
                     
                     <div className={styles.pdDescriptionBlock}>
-                      <h3 style={{ fontSize: '1.2rem', marginBottom: '1rem', fontWeight: '600' }}>About this eBook</h3>
-                      <p className={styles.pdDescription}>Step into the future and discover how technology could reshape the world by 2050.</p>
-                      <p className={styles.pdDescription}>The World in 2050 is a beautifully designed visual eBook that explores the innovations expected to transform everyday life over the coming decades. From Artificial Intelligence and humanoid robots to smart cities, quantum computing, biotechnology, space exploration, and sustainable technologies, this guide explains complex ideas in a simple, engaging way.</p>
-                      <p className={styles.pdDescription}>Designed for students, technology enthusiasts, professionals, and curious minds, the book combines illustrations, real-world examples, timelines, and easy-to-understand explanations to help readers understand not only what the future may look like, but also why today&apos;s innovations matter. It explores how AI systems, robotics, automation, connected technologies, and responsible innovation may shape society while also discussing the opportunities and ethical challenges they bring.</p>
-                      <p className={styles.pdDescription} style={{ marginBottom: '2rem' }}>Whether you&apos;re fascinated by emerging technologies or simply want a glimpse into tomorrow&apos;s world, this eBook offers an inspiring and educational journey into the future.</p>
+                      {selectedProduct.description && (
+                        <>
+                          <h3 style={{ fontSize: '1.2rem', marginBottom: '1rem', fontWeight: '600' }}>About this eBook</h3>
+                          {selectedProduct.description}
+                        </>
+                      )}
                       
-                      <h4 style={{ fontSize: '1.1rem', marginBottom: '1rem', fontWeight: '500' }}>Perfect For</h4>
-                      <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem', marginBottom: '2rem', lineHeight: '1.8', color: '#B3B3B3' }}>
-                        <li>Students</li>
-                        <li>AI Enthusiasts</li>
-                        <li>Developers</li>
-                        <li>Entrepreneurs</li>
-                        <li>Technology Professionals</li>
-                        <li>Future Thinkers</li>
-                        <li>Science Lovers</li>
-                      </ul>
+                      {selectedProduct.whatYouWillLearn && (
+                        <>
+                          <h4 style={{ fontSize: '1.1rem', marginBottom: '1rem', fontWeight: '500' }}>What You&apos;ll Learn</h4>
+                          <ul style={{ listStyleType: 'none', paddingLeft: '0', marginBottom: '2rem', lineHeight: '1.8', color: '#B3B3B3' }}>
+                            {selectedProduct.whatYouWillLearn.map((item, idx) => (
+                              <li key={idx}>✓ {item}</li>
+                            ))}
+                          </ul>
+                        </>
+                      )}
+                      
+                      {selectedProduct.perfectFor && (
+                        <>
+                          <h4 style={{ fontSize: '1.1rem', marginBottom: '1rem', fontWeight: '500' }}>Perfect For</h4>
+                          <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem', marginBottom: '2rem', lineHeight: '1.8', color: '#B3B3B3' }}>
+                            {selectedProduct.perfectFor.map((item, idx) => (
+                              <li key={idx}>{item}</li>
+                            ))}
+                          </ul>
+                        </>
+                      )}
                     </div>
 
                     <div className={styles.pdFeatureIconsRow}>
