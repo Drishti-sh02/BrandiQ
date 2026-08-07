@@ -735,45 +735,41 @@ export default function Home() {
     {
       title: "Profile",
       content: (
-        <div style={{ padding: '2rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', marginBottom: '2rem', gap: '1.5rem' }}>
-            <div style={{ width: '80px', height: '80px', borderRadius: '50%', backgroundColor: '#eee', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <UserIcon size={40} color="#555" />
+        <div className={styles.productsPageWrapper}>
+          <div className={styles.productsTopSection}>
+            <div className={styles.productsContentLeft}>
+              <p className={styles.productsGreetingText}>Welcome back, Creator!</p>
+              <h1 className={styles.productsMainTitle}>YOUR PROFILE</h1>
+              <h3 className={styles.productsSubtitle}>Account Details</h3>
+              <p className={styles.productsBodyText}>
+                <strong>Email:</strong> user@example.com<br />
+                <strong>Member Since:</strong> August 2026<br />
+                <strong>Plan:</strong> Lifetime Value
+              </p>
+
+              <div className={styles.productsButtonGroup}>
+                <button className={styles.btnPrimary} onClick={() => setActiveOverlay('downloads')}>
+                  <span className={styles.btnIcon}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></svg>
+                  </span> YOUR DOWNLOADS <span className={styles.btnArrow}>→</span>
+                </button>
+                <button className={styles.btnSecondary} onClick={() => setActiveOverlay('wishlist')}>
+                  <span className={styles.btnIcon}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
+                  </span> YOUR WISHLIST ({wishlistItems.length}) <span className={styles.btnArrow}>→</span>
+                </button>
+                <button className={styles.btnSecondary} onClick={() => { setIsSignedIn(false); goToPage(0); }} style={{ borderColor: '#d32f2f', color: '#d32f2f' }}>
+                  <span className={styles.btnIcon}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d32f2f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" x2="9" y1="12" y2="12" /></svg>
+                  </span> SIGN OUT <span className={styles.btnArrow}>→</span>
+                </button>
+              </div>
             </div>
-            <div>
-              <h2 style={{ fontSize: '2.5rem', marginBottom: '0.5rem', fontWeight: 'bold' }}>Your Profile</h2>
-              <p style={{ color: '#666', fontSize: '1.1rem', margin: 0 }}>Welcome back, Creator!</p>
+
+            <div className={styles.productsContentRight} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <UserIcon size={240} color="#111" strokeWidth={1} />
             </div>
           </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
-            <div style={{ padding: '2rem', border: '1px solid #ddd', borderRadius: '12px', background: '#fafafa' }}>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Account Details</h3>
-              <p style={{ margin: '0.5rem 0' }}><strong>Email:</strong> user@example.com</p>
-              <p style={{ margin: '0.5rem 0' }}><strong>Member Since:</strong> August 2026</p>
-              <p style={{ margin: '0.5rem 0' }}><strong>Plan:</strong> Lifetime Value</p>
-            </div>
-
-            <div style={{ padding: '2rem', border: '1px solid #ddd', borderRadius: '12px', background: '#fafafa' }}>
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Quick Actions</h3>
-              <ul style={{ listStyle: 'none', padding: 0 }}>
-                <li style={{ marginBottom: '1rem' }}>
-                  <button onClick={() => setActiveOverlay('downloads')} style={{ background: 'none', border: 'none', color: '#0066cc', fontSize: '1.1rem', cursor: 'pointer', textDecoration: 'underline', padding: 0 }}>Access My Downloads</button>
-                </li>
-                <li style={{ marginBottom: '1rem' }}>
-                  <button onClick={() => setActiveOverlay('wishlist')} style={{ background: 'none', border: 'none', color: '#0066cc', fontSize: '1.1rem', cursor: 'pointer', textDecoration: 'underline', padding: 0 }}>View Wishlist ({wishlistItems.length})</button>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <button
-            className="notebook-button"
-            onClick={() => { setIsSignedIn(false); goToPage(0); }}
-            style={{ borderColor: '#d32f2f', color: '#d32f2f' }}
-          >
-            Sign Out
-          </button>
         </div>
       )
     }
