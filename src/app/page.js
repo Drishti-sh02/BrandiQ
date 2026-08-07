@@ -765,9 +765,8 @@ export default function Home() {
             <div className={styles.productsContentLeft}>
               <p className={styles.productsGreetingText}>Welcome back, Creator!</p>
               <h1 className={styles.productsMainTitle}>YOUR PROFILE</h1>
-              
               <div style={{ margin: '3rem 0' }}>
-                <img src="/profile_avatar_sketch.png" alt="Creator Avatar" style={{ width: '180px', height: '180px', objectFit: 'contain' }} />
+                <img src="/custom-profile.png" alt="Creator Avatar" style={{ width: '350px', height: '350px', objectFit: 'contain' }} />
               </div>
             </div>
 
