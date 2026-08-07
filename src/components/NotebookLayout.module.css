@@ -92,3 +92,24 @@
   background-color: rgba(0,0,0,0.2);
   border-radius: 4px;
 }
+
+@media (max-width: 768px) {
+  .notebookWrapper {
+    width: 95vw;
+    height: 75vh;
+  }
+  
+  .spiralBinding {
+    left: -10px;
+    width: 20px;
+  }
+  
+  .ring {
+    width: 25px;
+    height: 6px;
+  }
+  
+  .pageContent {
+    padding: 10px 15px 10px 25px; /* Less padding, leaving some room for the spiral binding */
+  }
+}
