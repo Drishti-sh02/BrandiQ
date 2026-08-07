@@ -117,13 +117,12 @@ export default function Home() {
   const [previewImage, setPreviewImage] = useState(null);
 
   const storeProducts = [
-    { 
-      id: 101, 
-      title: 'The World of 2025', 
+    {
+      id: 101,
+      title: 'The World of 2025',
       subtitle: 'AI, Robots & Human Civilization',
-      rating: '★★★★★ 4.9 (320+ Readers)',
       currency: '€',
-      price: 120.00, 
+      price: 120.00,
       image: '/TWO2025 COVER.png',
       description: (
         <>
@@ -135,13 +134,12 @@ export default function Home() {
       ),
       perfectFor: ['Students', 'AI Enthusiasts', 'Developers', 'Entrepreneurs', 'Technology Professionals', 'Future Thinkers', 'Science Lovers']
     },
-    { 
-      id: 102, 
-      title: 'Cloud Computing Blueprint', 
+    {
+      id: 102,
+      title: 'Cloud Computing Blueprint',
       subtitle: 'A Beginner\'s Guide to Cloud Technologies, Architecture & Real-World Applications',
-      rating: '⭐⭐⭐⭐⭐ 4.9 (180+ Readers)',
-      currency: '₹',
-      price: 249.00, 
+      currency: '€',
+      price: 110,
       image: '/CC COVER.png',
       description: (
         <>
@@ -814,10 +812,10 @@ export default function Home() {
       {/* Top Navbar */}
       <nav className={styles.navbar}>
         <div className={styles.navLinks}>
-          <img 
-            src="/logo2.png" 
-            alt="BrandiQ Logo" 
-            style={{ height: '30px', marginRight: '1rem', cursor: 'default', objectFit: 'contain' }} 
+          <img
+            src="/logo2.png"
+            alt="BrandiQ Logo"
+            style={{ height: '30px', marginRight: '1rem', cursor: 'default', objectFit: 'contain' }}
             onClick={() => goToPage(0)}
           />
           {navItems.map((item) => (
@@ -927,9 +925,9 @@ export default function Home() {
             {activeOverlay === 'store' && (
               <div className={styles.productGrid}>
                 {filteredStoreProducts.map(product => (
-                  <div 
-                    key={product.id} 
-                    className={styles.productStickyNote} 
+                  <div
+                    key={product.id}
+                    className={styles.productStickyNote}
                     onClick={() => {
                       setSelectedProduct(product);
                       setPreviewImage(product.image);
@@ -1128,32 +1126,32 @@ export default function Home() {
                     </div>
 
                     <div className={styles.pdActionButtons}>
-                      <button 
+                      <button
                         className={styles.pdBuyNow}
                         onClick={(e) => { e.stopPropagation(); if (!cartItems.find(item => item.id === selectedProduct.id)) { toggleCart(selectedProduct); } setActiveOverlay('cart'); }}
                       >
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>
                         BUY NOW
                       </button>
-                      <button 
+                      <button
                         className={styles.pdAddToCart}
                         onClick={(e) => { e.stopPropagation(); toggleCart(selectedProduct); }}
                       >
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" /><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" /></svg>
                         {cartItems.find(item => item.id === selectedProduct.id) ? 'REMOVE FROM CART' : 'ADD TO CART'}
                       </button>
-                      <button 
+                      <button
                         className={styles.pdAddWishlist}
                         onClick={(e) => { e.stopPropagation(); toggleWishlist(selectedProduct.id); }}
                       >
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
                         {wishlistItems.includes(selectedProduct.id) ? 'REMOVE FROM WISHLIST' : 'ADD TO WISHLIST'}
                       </button>
                     </div>
 
                     <div className={styles.pdTrustRow}>
                       <span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 12 11 14 15 10" /></svg>
                         Secure Payment
                       </span>
                       <span className={styles.pdTrustDivider}>|</span>
@@ -1168,11 +1166,11 @@ export default function Home() {
                     <div className={styles.pdPriceRow}>
                       <span className={styles.pdPrice}>{selectedProduct.currency || '€'}{selectedProduct.price.toFixed(2)}</span>
                       <span className={styles.pdBadge}>
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
                         Instant Download
                       </span>
                     </div>
-                    
+
                     <div className={styles.pdDescriptionBlock}>
                       {selectedProduct.description && (
                         <>
@@ -1180,7 +1178,7 @@ export default function Home() {
                           {selectedProduct.description}
                         </>
                       )}
-                      
+
                       {selectedProduct.whatYouWillLearn && (
                         <>
                           <h4 style={{ fontSize: '1.1rem', marginBottom: '1rem', fontWeight: '500' }}>What You&apos;ll Learn</h4>
@@ -1191,7 +1189,7 @@ export default function Home() {
                           </ul>
                         </>
                       )}
-                      
+
                       {selectedProduct.perfectFor && (
                         <>
                           <h4 style={{ fontSize: '1.1rem', marginBottom: '1rem', fontWeight: '500' }}>Perfect For</h4>
@@ -1206,20 +1204,20 @@ export default function Home() {
 
                     <div className={styles.pdFeatureIconsRow}>
                       <div className={styles.pdFeatureIcon}>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                        <span>Instant<br/>Download</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" y1="15" x2="12" y2="3" /></svg>
+                        <span>Instant<br />Download</span>
                       </div>
                       <div className={styles.pdFeatureIcon}>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                        <span>65<br/>Pages</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" /></svg>
+                        <span>65<br />Pages</span>
                       </div>
                       <div className={styles.pdFeatureIcon}>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-                        <span>High Quality<br/>PDF</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="9" y1="15" x2="15" y2="15" /></svg>
+                        <span>High Quality<br />PDF</span>
                       </div>
                       <div className={styles.pdFeatureIcon}>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M2 12a10 10 0 1 0 20 0 10 10 0 1 0-20 0M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM12 7v5l3 3"/></svg>
-                        <span>Lifetime<br/>Access</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M2 12a10 10 0 1 0 20 0 10 10 0 1 0-20 0M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18ZM12 7v5l3 3" /></svg>
+                        <span>Lifetime<br />Access</span>
                       </div>
                     </div>
                   </div>
