@@ -289,7 +289,7 @@ export default function Home() {
         <div className={styles.heroPageWrapper}>
           {/* Left Column */}
           <div className={styles.heroContentLeft}>
-            <p className={styles.greetingText}>Nice to meet you! 👋</p>
+            <p className={styles.greetingText}>Nice to meet you! </p>
 
             <h1 className={styles.heroMainTitle}>
               WELCOME TO BRANDIQ
