@@ -116,6 +116,13 @@ export default function Home() {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
 
+  const [profileData, setProfileData] = useState({
+    name: 'Creator',
+    dob: '2000-01-01',
+    email: 'user@example.com',
+    status: 'Student'
+  });
+  const [isEditingProfile, setIsEditingProfile] = useState(false);
   const storeProducts = [
     {
       id: 101,
@@ -741,23 +748,48 @@ export default function Home() {
               <p className={styles.productsGreetingText}>Welcome back, Creator!</p>
               <h1 className={styles.productsMainTitle}>YOUR PROFILE</h1>
               <h3 className={styles.productsSubtitle}>Account Details</h3>
-              <p className={styles.productsBodyText}>
-                <strong>Email:</strong> user@example.com<br />
-                <strong>Member Since:</strong> August 2026<br />
-                <strong>Plan:</strong> Lifetime Value
-              </p>
+              <div className={styles.productsBodyText}>
+                {isEditingProfile ? (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', maxWidth: '300px' }}>
+                    <div>
+                      <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.2rem' }}>Name</label>
+                      <input type="text" value={profileData.name} onChange={(e) => setProfileData({ ...profileData, name: e.target.value })} style={{ width: '100%', padding: '0.5rem', border: '1px solid #111' }} />
+                    </div>
+                    <div>
+                      <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.2rem' }}>Date of Birth</label>
+                      <input type="date" value={profileData.dob} onChange={(e) => setProfileData({ ...profileData, dob: e.target.value })} style={{ width: '100%', padding: '0.5rem', border: '1px solid #111' }} />
+                    </div>
+                    <div>
+                      <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.2rem' }}>Email</label>
+                      <input type="email" value={profileData.email} disabled style={{ width: '100%', padding: '0.5rem', border: '1px solid #ddd', background: '#f5f5f5', color: '#888' }} />
+                    </div>
+                    <div>
+                      <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.2rem' }}>Status</label>
+                      <select value={profileData.status} onChange={(e) => setProfileData({ ...profileData, status: e.target.value })} style={{ width: '100%', padding: '0.5rem', border: '1px solid #111' }}>
+                        <option value="Student">Student</option>
+                        <option value="Employee">Employee</option>
+                      </select>
+                    </div>
+                    <button className={styles.btnPrimary} onClick={() => setIsEditingProfile(false)} style={{ marginTop: '1rem', width: 'fit-content' }}>
+                      SAVE CHANGES <span className={styles.btnArrow}>→</span>
+                    </button>
+                  </div>
+                ) : (
+                  <>
+                    <p style={{ lineHeight: '1.8' }}>
+                      <strong>Name:</strong> {profileData.name}<br />
+                      <strong>Date of Birth:</strong> {profileData.dob}<br />
+                      <strong>Email:</strong> {profileData.email}<br />
+                      <strong>Status:</strong> {profileData.status}
+                    </p>
+                    <button onClick={() => setIsEditingProfile(true)} style={{ background: 'none', border: 'none', color: '#111', textDecoration: 'underline', cursor: 'pointer', padding: 0, marginTop: '0.5rem', fontWeight: 'bold' }}>
+                      Edit Profile
+                    </button>
+                  </>
+                )}
+              </div>
 
-              <div className={styles.productsButtonGroup}>
-                <button className={styles.btnPrimary} onClick={() => setActiveOverlay('downloads')}>
-                  <span className={styles.btnIcon}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></svg>
-                  </span> YOUR DOWNLOADS <span className={styles.btnArrow}>→</span>
-                </button>
-                <button className={styles.btnSecondary} onClick={() => setActiveOverlay('wishlist')}>
-                  <span className={styles.btnIcon}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
-                  </span> YOUR WISHLIST ({wishlistItems.length}) <span className={styles.btnArrow}>→</span>
-                </button>
+              <div className={styles.productsButtonGroup} style={{ marginTop: '2rem' }}>
                 <button className={styles.btnSecondary} onClick={() => { setIsSignedIn(false); goToPage(0); }} style={{ borderColor: '#d32f2f', color: '#d32f2f' }}>
                   <span className={styles.btnIcon}>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d32f2f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" x2="9" y1="12" y2="12" /></svg>
