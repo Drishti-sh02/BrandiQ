@@ -742,22 +742,32 @@ export default function Home() {
     {
       title: "Profile",
       content: (
-        <div className={styles.productsPageWrapper}>
+        <div className={styles.productsPageWrapper} style={{ position: 'relative' }}>
+          <button 
+            className={styles.btnSecondary} 
+            onClick={() => { setIsSignedIn(false); goToPage(0); }} 
+            style={{ 
+              position: 'absolute', 
+              top: '2rem', 
+              right: '2rem', 
+              borderColor: '#d32f2f', 
+              color: '#d32f2f',
+              padding: '0.4rem 0.8rem',
+              fontSize: '0.9rem',
+              zIndex: 10
+            }}
+          >
+            <span className={styles.btnIcon}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d32f2f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" x2="9" y1="12" y2="12" /></svg>
+            </span> SIGN OUT
+          </button>
           <div className={styles.productsTopSection}>
             <div className={styles.productsContentLeft}>
               <p className={styles.productsGreetingText}>Welcome back, Creator!</p>
               <h1 className={styles.productsMainTitle}>YOUR PROFILE</h1>
               
               <div style={{ margin: '3rem 0' }}>
-                <UserIcon size={180} color="#111" strokeWidth={1} />
-              </div>
-
-              <div className={styles.productsButtonGroup}>
-                <button className={styles.btnSecondary} onClick={() => { setIsSignedIn(false); goToPage(0); }} style={{ borderColor: '#d32f2f', color: '#d32f2f' }}>
-                  <span className={styles.btnIcon}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d32f2f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" x2="9" y1="12" y2="12" /></svg>
-                  </span> SIGN OUT <span className={styles.btnArrow}>→</span>
-                </button>
+                <img src="/profile_avatar_sketch.png" alt="Creator Avatar" style={{ width: '180px', height: '180px', objectFit: 'contain' }} />
               </div>
             </div>
 
