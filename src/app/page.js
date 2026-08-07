@@ -1116,9 +1116,24 @@ export default function Home() {
                       </span>
                     </div>
                     
-                    <p className={styles.pdDescription}>
-                      A visual guide to the technologies that will shape our future. Explore how Artificial Intelligence, robots, biotechnology, smart cities, and more will transform the world by 2050.
-                    </p>
+                    <div className={styles.pdDescriptionBlock}>
+                      <h3 style={{ fontSize: '1.2rem', marginBottom: '1rem', fontWeight: '600' }}>About this eBook</h3>
+                      <p className={styles.pdDescription}>Step into the future and discover how technology could reshape the world by 2050.</p>
+                      <p className={styles.pdDescription}>The World in 2050 is a beautifully designed visual eBook that explores the innovations expected to transform everyday life over the coming decades. From Artificial Intelligence and humanoid robots to smart cities, quantum computing, biotechnology, space exploration, and sustainable technologies, this guide explains complex ideas in a simple, engaging way.</p>
+                      <p className={styles.pdDescription}>Designed for students, technology enthusiasts, professionals, and curious minds, the book combines illustrations, real-world examples, timelines, and easy-to-understand explanations to help readers understand not only what the future may look like, but also why today&apos;s innovations matter. It explores how AI systems, robotics, automation, connected technologies, and responsible innovation may shape society while also discussing the opportunities and ethical challenges they bring.</p>
+                      <p className={styles.pdDescription} style={{ marginBottom: '2rem' }}>Whether you&apos;re fascinated by emerging technologies or simply want a glimpse into tomorrow&apos;s world, this eBook offers an inspiring and educational journey into the future.</p>
+                      
+                      <h4 style={{ fontSize: '1.1rem', marginBottom: '1rem', fontWeight: '500' }}>Perfect For</h4>
+                      <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem', marginBottom: '2rem', lineHeight: '1.8', color: '#B3B3B3' }}>
+                        <li>Students</li>
+                        <li>AI Enthusiasts</li>
+                        <li>Developers</li>
+                        <li>Entrepreneurs</li>
+                        <li>Technology Professionals</li>
+                        <li>Future Thinkers</li>
+                        <li>Science Lovers</li>
+                      </ul>
+                    </div>
 
                     <div className={styles.pdFeatureIconsRow}>
                       <div className={styles.pdFeatureIcon}>
