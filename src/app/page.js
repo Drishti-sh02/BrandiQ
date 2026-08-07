@@ -1100,24 +1100,7 @@ export default function Home() {
                 <div className={styles.pdLayout}>
                   <div className={styles.pdLeftCol}>
                     <div className={styles.pdCoverWrapper}>
-                      <img src={previewImage || selectedProduct.image} alt={selectedProduct.title} className={styles.pdCoverImage} />
-                    </div>
-                    <div className={styles.pdThumbnails}>
-                      <img 
-                        src={selectedProduct.image} 
-                        alt="Cover" 
-                        onClick={() => setPreviewImage(selectedProduct.image)} 
-                        className={`${styles.pdThumb} ${previewImage === selectedProduct.image ? styles.pdThumbActive : ''}`} 
-                      />
-                      <div className={`${styles.pdThumbPlaceholder} ${previewImage === '/about-hero.png' ? styles.pdThumbActive : ''}`} onClick={() => setPreviewImage('/about-hero.png')}>
-                        <img src="/about-hero.png" alt="Preview 1" className={styles.pdThumb} />
-                      </div>
-                      <div className={`${styles.pdThumbPlaceholder} ${previewImage === '/products-hero.png' ? styles.pdThumbActive : ''}`} onClick={() => setPreviewImage('/products-hero.png')}>
-                        <img src="/products-hero.png" alt="Preview 2" className={styles.pdThumb} />
-                      </div>
-                      <div className={`${styles.pdThumbPlaceholder} ${previewImage === '/service-2.png' ? styles.pdThumbActive : ''}`} onClick={() => setPreviewImage('/service-2.png')}>
-                        <img src="/service-2.png" alt="Preview 3" className={styles.pdThumb} />
-                      </div>
+                      <img src={selectedProduct.image} alt={selectedProduct.title} className={styles.pdCoverImage} />
                     </div>
                   </div>
 
