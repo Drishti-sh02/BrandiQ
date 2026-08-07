@@ -776,6 +776,12 @@ export default function Home() {
       {/* Top Navbar */}
       <nav className={styles.navbar}>
         <div className={styles.navLinks}>
+          <img 
+            src="/logo2.png" 
+            alt="BrandiQ Logo" 
+            style={{ height: '30px', marginRight: '1rem', cursor: 'pointer', objectFit: 'contain' }} 
+            onClick={() => goToPage(0)}
+          />
           {navItems.map((item) => (
             <button
               key={item.name}
