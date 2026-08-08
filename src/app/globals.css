@@ -15,13 +15,13 @@ body {
   color: var(--foreground);
   margin: 0;
   padding: 0;
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23111111' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M4 4l3.5 1L21 18.5 18.5 21 5 7.5 4 4z'></path><path d='M7.5 5l11.5 11.5'></path><path d='M5 5l2.5 2.5'></path></svg>") 4 4, auto;
+  cursor: auto;
 }
 
 a, button, .notebook-button, [role="button"] {
   color: inherit;
   text-decoration: none;
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23111111' stroke='%23111111' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M4 4l3.5 1L21 18.5 18.5 21 5 7.5 4 4z'></path><path d='M7.5 5l11.5 11.5'></path><path d='M5 5l2.5 2.5'></path></svg>") 4 4, pointer !important;
+  cursor: pointer;
 }
 
 * {
@@ -80,9 +80,9 @@ p {
 }
 
 .dark-theme, .dark-theme * {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M4 4l3.5 1L21 18.5 18.5 21 5 7.5 4 4z'></path><path d='M7.5 5l11.5 11.5'></path><path d='M5 5l2.5 2.5'></path></svg>") 4 4, auto !important;
+  cursor: auto !important;
 }
 
 .dark-theme a, .dark-theme button, .dark-theme [role="button"], .dark-theme a *, .dark-theme button * {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%23ffffff' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M4 4l3.5 1L21 18.5 18.5 21 5 7.5 4 4z'></path><path d='M7.5 5l11.5 11.5'></path><path d='M5 5l2.5 2.5'></path></svg>") 4 4, pointer !important;
+  cursor: pointer !important;
 }
