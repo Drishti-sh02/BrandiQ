@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import NotebookLayout from '@/components/NotebookLayout';
@@ -101,7 +101,15 @@ const Footer = ({ goToPage, openService }) => (
 );
 
 export default function Home() {
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsInitialLoading(false);
+    }, 2500);
+    return () => clearTimeout(timer);
+  }, []);
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [activeService, setActiveService] = useState(null);
   const [animationClass, setAnimationClass] = useState('');
@@ -864,6 +872,14 @@ export default function Home() {
   });
 
   const cartSubtotal = cartItems.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+
+  if (isInitialLoading) {
+    return (
+      <div className={styles.initialLoader}>
+        <img src="/logo.png" alt="BrandiQ" className={styles.initialLoaderLogo} />
+      </div>
+    );
+  }
 
   return (
     <main className={styles.mainContainer}>
