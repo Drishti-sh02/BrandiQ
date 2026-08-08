@@ -748,7 +748,7 @@ export default function Home() {
               <p className={styles.productsGreetingText}>Welcome back, Creator!</p>
               <h1 className={styles.productsMainTitle}>YOUR PROFILE</h1>
               <div style={{ margin: '3rem 0' }}>
-                <img src="/custom-profile.png" alt="Creator Avatar" style={{ width: '350px', height: '350px', objectFit: 'contain' }} />
+                <img src="/custom-profile.png" alt="Creator Avatar" style={{ width: '385px', height: '385px', objectFit: 'contain' }} />
               </div>
             </div>
 
@@ -773,7 +773,7 @@ export default function Home() {
                 border: '2px solid #111', 
                 padding: '3rem', 
                 backgroundColor: '#fff',
-                boxShadow: '8px 8px 0px 0px #111',
+                boxShadow: '4px 4px 0px 0px #111',
                 maxWidth: '450px',
                 width: '100%'
               }}>
