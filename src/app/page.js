@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import NotebookLayout from '@/components/NotebookLayout';
-import { Users, Rocket, Award, Heart, Target, Lightbulb, Handshake, BarChart3, Send, Mail, Phone, MapPin, MessageSquare, User as UserIcon, Clock, ShieldCheck, Tag, PenLine, ChevronDown, ChevronRight, Check, Sparkles, Shield, CloudDownload, Infinity as InfinityIcon, ArrowRight } from 'lucide-react';
+import { Users, Rocket, Award, Heart, Target, Lightbulb, Handshake, BarChart3, Send, Mail, Phone, MapPin, MessageSquare, User as UserIcon, Clock, ShieldCheck, Tag, PenLine, ChevronDown, ChevronRight, Check, Sparkles, Shield, CloudDownload, Infinity as InfinityIcon, ArrowRight, BookOpen, Image as ImageIcon, Headphones, ShoppingBag, PlaySquare, FileText, Star } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import styles from './page.module.css';
 
@@ -876,7 +876,51 @@ export default function Home() {
   if (isInitialLoading) {
     return (
       <div className={styles.initialLoader}>
-        <img src="/logo.png" alt="BrandiQ" className={styles.initialLoaderLogo} />
+        <div className={styles.complexLoaderContent}>
+          <div className={styles.loaderOrbitContainer}>
+            <svg className={styles.loaderDashedCircle} viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="48" fill="none" stroke="#999" strokeWidth="0.4" strokeDasharray="2 3" />
+            </svg>
+            
+            <div className={`${styles.loaderFloatingIcon} ${styles.loaderIconTop}`}>
+              <CloudDownload size={28} strokeWidth={1.2} />
+            </div>
+            <div className={`${styles.loaderFloatingIcon} ${styles.loaderIconTopRight}`}>
+              <FileText size={28} strokeWidth={1.2} />
+            </div>
+            <div className={`${styles.loaderFloatingIcon} ${styles.loaderIconRight}`}>
+              <PlaySquare size={28} strokeWidth={1.2} />
+            </div>
+            <div className={`${styles.loaderFloatingIcon} ${styles.loaderIconBottomRight}`}>
+              <ShoppingBag size={28} strokeWidth={1.2} />
+            </div>
+            <div className={`${styles.loaderFloatingIcon} ${styles.loaderIconBottomLeft}`}>
+              <Headphones size={28} strokeWidth={1.2} />
+            </div>
+            <div className={`${styles.loaderFloatingIcon} ${styles.loaderIconLeft}`}>
+              <ImageIcon size={28} strokeWidth={1.2} />
+            </div>
+            <div className={`${styles.loaderFloatingIcon} ${styles.loaderIconTopLeft}`}>
+              <BookOpen size={28} strokeWidth={1.2} />
+            </div>
+
+            <div className={styles.loaderCenterBrand}>
+              <BookOpen size={72} strokeWidth={1} className={styles.loaderCenterIcon} />
+              <h1 className={styles.loaderBrandText}>BrandiQ</h1>
+              <div className={styles.loaderProgressWrapper}>
+                <div className={styles.loaderProgressTrack}>
+                  <div className={styles.loaderProgressFill}></div>
+                </div>
+              </div>
+              <p className={styles.loaderText}>Loading...</p>
+              <div className={styles.loaderDots}>
+                <span className={styles.loaderDot}></span>
+                <span className={styles.loaderDot}></span>
+                <span className={styles.loaderDot}></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
