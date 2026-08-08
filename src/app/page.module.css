@@ -2463,6 +2463,13 @@
     padding-bottom: 2rem;
     text-align: center;
   }
+  .contactLayout {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .contactTitle {
+    font-size: 2.5rem;
+  }
 }
 
 /* Loading Screen Styles */
