@@ -100,6 +100,9 @@ const Footer = ({ goToPage, openService }) => (
   </footer>
 );
 
+const PAGE_URLS = ['/', '/services', '/products', '/blog', '/about', '/contact', '/profile'];
+const OVERLAY_URLS = ['/cart', '/wishlist', '/downloads', '/store', '/thankyou'];
+
 export default function Home() {
   const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(0);
@@ -135,6 +138,43 @@ export default function Home() {
 
   // Store State
   const [activeOverlay, setActiveOverlay] = useState(null); // 'store', 'cart', 'wishlist', 'downloads', 'product_details'
+  
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const path = window.location.pathname;
+      const pageIndex = PAGE_URLS.indexOf(path);
+      if (pageIndex !== -1) {
+        setCurrentPage(pageIndex);
+      } else if (OVERLAY_URLS.includes(path)) {
+        setActiveOverlay(path.substring(1));
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !isInitialLoading) {
+      const targetUrl = activeOverlay ? `/${activeOverlay}` : PAGE_URLS[currentPage];
+      if (window.location.pathname !== targetUrl) {
+        window.history.pushState(null, '', targetUrl);
+      }
+    }
+  }, [currentPage, activeOverlay, isInitialLoading]);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname;
+      const pageIndex = PAGE_URLS.indexOf(path);
+      if (pageIndex !== -1) {
+        setCurrentPage(pageIndex);
+        setActiveOverlay(null);
+      } else if (OVERLAY_URLS.includes(path)) {
+        setActiveOverlay(path.substring(1));
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   const [cartItems, setCartItems] = useState([]);
   const [wishlistItems, setWishlistItems] = useState([]);
   const [downloads, setDownloads] = useState([]);
