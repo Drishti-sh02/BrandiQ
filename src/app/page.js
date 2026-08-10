@@ -1153,9 +1153,13 @@ export default function Home() {
               <div className={styles.cartView}>
                 <h1 className={styles.storeSectionTitle}>Your Cart</h1>
                 {!isSignedIn ? (
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginTop: '4rem', gap: '1rem' }}>
-                    <p className={styles.emptyStateMsg} style={{ marginTop: 0 }}>Please sign in to view your cart.</p>
-                    <button className={styles.btnPrimary} onClick={() => setIsSignedIn(true)}>SIGN IN</button>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', margin: '4rem auto', padding: '3rem 2rem', gap: '1.5rem', border: '2px solid #111', backgroundColor: '#fff', boxShadow: '4px 4px 0px 0px #111', maxWidth: '400px', textAlign: 'center' }}>
+                    <div style={{ width: '50px', height: '50px', borderRadius: '50%', backgroundColor: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '2px solid #111' }}>
+                      <UserIcon size={24} color="#111" />
+                    </div>
+                    <p className={styles.emptyStateMsg} style={{ marginTop: 0, color: '#111', fontWeight: 'bold' }}>Sign in to view your cart</p>
+                    <p style={{ fontSize: '0.9rem', color: '#666', marginTop: '-0.5rem' }}>Access your saved items and checkout.</p>
+                    <button className={styles.btnPrimary} onClick={() => setIsSignedIn(true)} style={{ width: '100%', justifyContent: 'center' }}>SIGN IN TO CONTINUE</button>
                   </div>
                 ) : cartItems.length === 0 ? (
                   <p className={styles.emptyStateMsg}>Your cart is empty.</p>
@@ -1245,10 +1249,16 @@ export default function Home() {
               <div className={styles.wishlistView}>
                 <h1 className={styles.storeSectionTitle}>Your Wishlist</h1>
                 {!isSignedIn ? (
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginTop: '4rem', gap: '1rem' }}>
-                    <p className={styles.emptyStateMsg} style={{ marginTop: 0 }}>Please sign in to view your wishlist.</p>
-                    <button className={styles.btnPrimary} onClick={() => setIsSignedIn(true)}>SIGN IN</button>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', margin: '4rem auto', padding: '3rem 2rem', gap: '1.5rem', border: '2px solid #111', backgroundColor: '#fff', boxShadow: '4px 4px 0px 0px #111', maxWidth: '400px', textAlign: 'center' }}>
+                    <div style={{ width: '50px', height: '50px', borderRadius: '50%', backgroundColor: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '2px solid #111' }}>
+                      <UserIcon size={24} color="#111" />
+                    </div>
+                    <p className={styles.emptyStateMsg} style={{ marginTop: 0, color: '#111', fontWeight: 'bold' }}>Sign in to view your wishlist</p>
+                    <p style={{ fontSize: '0.9rem', color: '#666', marginTop: '-0.5rem' }}>Keep track of the products you love.</p>
+                    <button className={styles.btnPrimary} onClick={() => setIsSignedIn(true)} style={{ width: '100%', justifyContent: 'center' }}>SIGN IN TO CONTINUE</button>
                   </div>
+                ) : wishlistItems.length === 0 ? (
+                  <p className={styles.emptyStateMsg}>Your wishlist is empty.</p>
                 ) : (
                   <div className={styles.productGrid}>
                     {storeProducts.filter(p => wishlistItems.includes(p.id)).map(product => (
@@ -1265,7 +1275,6 @@ export default function Home() {
                         </div>
                       </div>
                     ))}
-                    {wishlistItems.length === 0 && <p className={styles.emptyStateMsg}>Your wishlist is empty.</p>}
                   </div>
                 )}
               </div>
@@ -1275,9 +1284,13 @@ export default function Home() {
               <div className={styles.downloadsView}>
                 <h1 className={styles.storeSectionTitle}>Your Downloads</h1>
                 {!isSignedIn ? (
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginTop: '4rem', gap: '1rem' }}>
-                    <p className={styles.emptyStateMsg} style={{ marginTop: 0 }}>Please sign in to view your downloads.</p>
-                    <button className={styles.btnPrimary} onClick={() => setIsSignedIn(true)}>SIGN IN</button>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', margin: '4rem auto', padding: '3rem 2rem', gap: '1.5rem', border: '2px solid #111', backgroundColor: '#fff', boxShadow: '4px 4px 0px 0px #111', maxWidth: '400px', textAlign: 'center' }}>
+                    <div style={{ width: '50px', height: '50px', borderRadius: '50%', backgroundColor: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '2px solid #111' }}>
+                      <UserIcon size={24} color="#111" />
+                    </div>
+                    <p className={styles.emptyStateMsg} style={{ marginTop: 0, color: '#111', fontWeight: 'bold' }}>Sign in to view your downloads</p>
+                    <p style={{ fontSize: '0.9rem', color: '#666', marginTop: '-0.5rem' }}>Access your purchased digital products.</p>
+                    <button className={styles.btnPrimary} onClick={() => setIsSignedIn(true)} style={{ width: '100%', justifyContent: 'center' }}>SIGN IN TO CONTINUE</button>
                   </div>
                 ) : downloads.length === 0 ? (
                   <p className={styles.emptyStateMsg}>You haven&apos;t purchased any items yet.</p>
