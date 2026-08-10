@@ -110,6 +110,25 @@ export default function Home() {
     }, 2500);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const paymentStatus = urlParams.get('payment');
+      if (paymentStatus === 'success') {
+        setCartItems([]);
+        setActiveOverlay('thankyou');
+        // Remove query param to prevent showing it on refresh
+        window.history.replaceState(null, '', window.location.pathname);
+      } else if (paymentStatus === 'cancelled') {
+        alert('Payment was cancelled.');
+        window.history.replaceState(null, '', window.location.pathname);
+      } else if (paymentStatus === 'failed' || paymentStatus === 'error') {
+        alert('Payment failed. Please try again.');
+        window.history.replaceState(null, '', window.location.pathname);
+      }
+    }
+  }, []);
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [activeService, setActiveService] = useState(null);
   const [animationClass, setAnimationClass] = useState('');
@@ -123,6 +142,7 @@ export default function Home() {
   const [priceFilter, setPriceFilter] = useState('all');
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
 
   const [profileData, setProfileData] = useState({
     name: 'Creator',
@@ -862,6 +882,32 @@ export default function Home() {
     }
   };
 
+  const handlePayNow = async () => {
+    if (cartItems.length === 0) return;
+    
+    setIsCheckingOut(true);
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ cartItems }),
+      });
+      
+      const data = await res.json();
+      
+      if (data.url) {
+        window.location.href = data.url; // Redirect to PayPal
+      } else {
+        alert(data.error || 'Checkout failed');
+        setIsCheckingOut(false);
+      }
+    } catch (err) {
+      console.error(err);
+      alert('An error occurred during checkout.');
+      setIsCheckingOut(false);
+    }
+  };
+
   const filteredStoreProducts = storeProducts.filter(product => {
     const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase());
     if (!matchesSearch) return false;
@@ -1114,7 +1160,9 @@ export default function Home() {
                     </div>
                     <div className={styles.subtotalSection}>
                       <h2>Subtotal: ${cartSubtotal}</h2>
-                      <button className={styles.payNowBtn} onClick={handlePayNow}>Pay Now</button>
+                      <button className={styles.payNowBtn} onClick={handlePayNow} disabled={isCheckingOut}>
+                        {isCheckingOut ? 'Processing...' : 'Pay Now'}
+                      </button>
                     </div>
                   </div>
                 )}
