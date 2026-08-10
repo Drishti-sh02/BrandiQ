@@ -6,9 +6,7 @@ import { authOptions } from "@/lib/authOptions";
 export async function POST(request) {
   try {
     const session = await getServerSession(authOptions);
-    if (!session || !session.user) {
-      return NextResponse.json({ error: 'You must be logged in to checkout' }, { status: 401 });
-    }
+    const userId = session?.user?.id || 'guest';
 
     const { cartItems } = await request.json();
 

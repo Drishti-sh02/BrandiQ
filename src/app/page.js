@@ -317,17 +317,7 @@ export default function Home() {
     }
   };
 
-  const handlePayNow = () => {
-    const newDownloads = [...downloads];
-    cartItems.forEach(item => {
-      if (!newDownloads.find(d => d.id === item.id)) {
-        newDownloads.push(item);
-      }
-    });
-    setDownloads(newDownloads);
-    setCartItems([]);
-    setActiveOverlay('thankyou');
-  };
+
 
   const navigateService = (direction) => {
     if (!activeService) return;
