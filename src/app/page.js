@@ -12,7 +12,7 @@ const Footer = ({ goToPage, openService }) => (
   <footer id="footer" className={styles.globalFooter}>
     <div className={styles.footerTop}>
       <div className={styles.footerBrand}>
-        <img src="/logo.png" alt="BRANDIQ" className={styles.footerLogo} />
+        <img src="/logo.png" alt="BRANDEQ" className={styles.footerLogo} />
         <p>Premium digital products designed to inspire, educate, and help you grow. One purchase, lifetime value.</p>
         <div className={styles.footerSocials}>
           <button className={styles.socialIconBtn} aria-label="WhatsApp">
@@ -75,7 +75,7 @@ const Footer = ({ goToPage, openService }) => (
             </div>
             <div className={styles.contactInfoText}>
               <strong>Email</strong>
-              <span>hello@brandiq.com</span>
+              <span>hello@brandeq.com</span>
             </div>
           </div>
 
@@ -85,7 +85,7 @@ const Footer = ({ goToPage, openService }) => (
 
     <div className={styles.footerBottom}>
       <div className={styles.footerCopyright}>
-        © 2024 Brandiq. All rights reserved.
+        © 2024 BrandeQ. All rights reserved.
       </div>
       <div className={styles.footerBottomLinks}>
         <Link href="/privacy-policy" style={{ textDecoration: 'none' }}>
@@ -353,7 +353,7 @@ export default function Home() {
             <p className={styles.greetingText}>Nice to meet you! </p>
 
             <h1 className={styles.heroMainTitle}>
-              WELCOME TO BRANDIQ
+              WELCOME TO BRANDEQ
             </h1>
 
             <div className={styles.heroDivider}></div>
@@ -647,7 +647,7 @@ export default function Home() {
                   </div>
                   <div className={styles.contactInfoContent}>
                     <h4>Email Us</h4>
-                    <p>hello@brandiq.com<br />We reply within 24 hours</p>
+                    <p>hello@brandeq.com<br />We reply within 24 hours</p>
                   </div>
                 </div>
 
@@ -942,7 +942,7 @@ export default function Home() {
 
             <div className={styles.loaderCenterBrand}>
               <BookOpen size={72} strokeWidth={1} className={styles.loaderCenterIcon} />
-              <h1 className={styles.loaderBrandText}>BrandiQ</h1>
+              <h1 className={styles.loaderBrandText}>BrandeQ</h1>
               <div className={styles.loaderProgressWrapper}>
                 <div className={styles.loaderProgressTrack}>
                   <div className={styles.loaderProgressFill}></div>
@@ -968,7 +968,7 @@ export default function Home() {
         <div className={styles.navLinks}>
           <img
             src="/logo2.png"
-            alt="BrandiQ Logo"
+            alt="BrandeQ Logo"
             style={{ height: '30px', marginRight: '1rem', cursor: 'default', objectFit: 'contain' }}
             onClick={() => goToPage(0)}
           />

@@ -18,7 +18,7 @@ const caveat = Caveat({
 });
 
 export const metadata = {
-  title: "BrandiQ Digital Agency",
+  title: "BrandeQ Digital Agency",
   description: "Premium Digital Agency Notebook Experience",
 };
 
