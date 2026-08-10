@@ -258,7 +258,6 @@ export default function Home() {
     }
     setTimeout(() => setContactStatus(null), 5000);
   };
-  const [isEditingProfile, setIsEditingProfile] = useState(false);
   const storeProducts = [
     {
       id: 101,
