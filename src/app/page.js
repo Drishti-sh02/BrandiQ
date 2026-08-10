@@ -965,6 +965,7 @@ export default function Home() {
                           SIGN OUT
                         </button>
                       </div>
+                    </div>
                   )}
                 </div>
               </div>
