@@ -21,7 +21,7 @@ const Footer = ({ goToPage, openService }) => (
           <button className={styles.socialIconBtn} aria-label="Email" onClick={() => window.location.href = 'mailto:info@brandeq.co.in'}>
             <Mail size={18} />
           </button>
-          <button className={styles.socialIconBtn} aria-label="Call" onClick={() => window.location.href = 'tel:9971123820'}>
+          <button className={styles.socialIconBtn} aria-label="Call" onClick={() => window.location.href = 'tel:+919971123820'}>
             <Phone size={18} />
           </button>
         </div>
@@ -65,7 +65,7 @@ const Footer = ({ goToPage, openService }) => (
             </div>
             <div className={styles.contactInfoText}>
               <strong>Phone</strong>
-              <span>9971123820</span>
+              <span>+91 9971123820</span>
             </div>
           </div>
 
@@ -682,7 +682,7 @@ export default function Home() {
                   </div>
                   <div className={styles.contactInfoContent}>
                     <h4>Call Us</h4>
-                    <p>9971123820<br />Mon - Fri, 10:00 AM - 6:00 PM</p>
+                    <p>+91 9971123820<br />Mon - Fri, 10:00 AM - 6:00 PM</p>
                   </div>
                 </div>
 
