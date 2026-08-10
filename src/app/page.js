@@ -15,13 +15,13 @@ const Footer = ({ goToPage, openService }) => (
         <img src="/logo.png" alt="BRANDEQ" className={styles.footerLogo} />
         <p>Premium digital products designed to inspire, educate, and help you grow. One purchase, lifetime value.</p>
         <div className={styles.footerSocials}>
-          <button className={styles.socialIconBtn} aria-label="WhatsApp">
+          <button className={styles.socialIconBtn} aria-label="WhatsApp" onClick={() => window.open('https://wa.me/919971123820', '_blank')}>
             <FaWhatsapp size={18} />
           </button>
-          <button className={styles.socialIconBtn} aria-label="Email">
+          <button className={styles.socialIconBtn} aria-label="Email" onClick={() => window.location.href = 'mailto:info@brandeq.co.in'}>
             <Mail size={18} />
           </button>
-          <button className={styles.socialIconBtn} aria-label="Call">
+          <button className={styles.socialIconBtn} aria-label="Call" onClick={() => window.location.href = 'tel:9971123820'}>
             <Phone size={18} />
           </button>
         </div>
@@ -65,7 +65,7 @@ const Footer = ({ goToPage, openService }) => (
             </div>
             <div className={styles.contactInfoText}>
               <strong>Phone</strong>
-              <span>+91 98765 43210</span>
+              <span>9971123820</span>
             </div>
           </div>
 
@@ -75,7 +75,7 @@ const Footer = ({ goToPage, openService }) => (
             </div>
             <div className={styles.contactInfoText}>
               <strong>Email</strong>
-              <span>hello@brandeq.com</span>
+              <span>info@brandeq.co.in</span>
             </div>
           </div>
 
@@ -148,8 +148,33 @@ export default function Home() {
     name: 'Creator',
     dob: '2000-01-01',
     email: 'user@example.com',
-    status: 'Student'
+    bio: ''
   });
+
+  // Contact Form State
+  const [contactForm, setContactForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
+  const [contactStatus, setContactStatus] = useState(null); // 'loading', 'success', 'error'
+
+  const handleContactSubmit = async (e) => {
+    e.preventDefault();
+    setContactStatus('loading');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(contactForm),
+      });
+      if (res.ok) {
+        setContactStatus('success');
+        setContactForm({ name: '', email: '', phone: '', subject: '', message: '' });
+      } else {
+        setContactStatus('error');
+      }
+    } catch (err) {
+      setContactStatus('error');
+    }
+    setTimeout(() => setContactStatus(null), 5000);
+  };
   const [isEditingProfile, setIsEditingProfile] = useState(false);
   const storeProducts = [
     {
@@ -647,7 +672,7 @@ export default function Home() {
                   </div>
                   <div className={styles.contactInfoContent}>
                     <h4>Email Us</h4>
-                    <p>hello@brandeq.com<br />We reply within 24 hours</p>
+                    <p>info@brandeq.co.in<br />We reply within 24 hours</p>
                   </div>
                 </div>
 
@@ -657,7 +682,7 @@ export default function Home() {
                   </div>
                   <div className={styles.contactInfoContent}>
                     <h4>Call Us</h4>
-                    <p>+91 98765 43210<br />Mon - Fri, 10:00 AM - 6:00 PM</p>
+                    <p>9971123820<br />Mon - Fri, 10:00 AM - 6:00 PM</p>
                   </div>
                 </div>
 
@@ -687,26 +712,26 @@ export default function Home() {
                 </div>
               </div>
 
-              <form className={styles.contactForm}>
+              <form className={styles.contactForm} onSubmit={handleContactSubmit}>
                 <div className={styles.formRow}>
                   <div className={styles.inputWrapper}>
                     <UserIcon size={18} className={styles.inputIcon} />
-                    <input type="text" placeholder="Your Name" className={styles.contactInput} />
+                    <input type="text" placeholder="Your Name" className={styles.contactInput} value={contactForm.name} onChange={e => setContactForm({...contactForm, name: e.target.value})} required />
                   </div>
                   <div className={styles.inputWrapper}>
                     <Mail size={18} className={styles.inputIcon} />
-                    <input type="email" placeholder="Your Email" className={styles.contactInput} />
+                    <input type="email" placeholder="Your Email" className={styles.contactInput} value={contactForm.email} onChange={e => setContactForm({...contactForm, email: e.target.value})} required />
                   </div>
                 </div>
 
                 <div className={styles.inputWrapper}>
                   <Phone size={18} className={styles.inputIcon} />
-                  <input type="text" placeholder="Your Phone (Optional)" className={styles.contactInput} />
+                  <input type="text" placeholder="Your Phone (Optional)" className={styles.contactInput} value={contactForm.phone} onChange={e => setContactForm({...contactForm, phone: e.target.value})} />
                 </div>
 
                 <div className={styles.inputWrapper}>
                   <Tag size={18} className={styles.inputIcon} />
-                  <select className={styles.contactSelect} defaultValue="">
+                  <select className={styles.contactSelect} value={contactForm.subject} onChange={e => setContactForm({...contactForm, subject: e.target.value})} required>
                     <option value="" disabled>Subject</option>
                     <option value="general">General Inquiry</option>
                     <option value="support">Support</option>
@@ -717,12 +742,14 @@ export default function Home() {
 
                 <div className={styles.inputWrapper}>
                   <PenLine size={18} className={styles.inputIcon} style={{ top: '1rem' }} />
-                  <textarea placeholder="Your Message" className={styles.contactTextarea}></textarea>
+                  <textarea placeholder="Your Message" className={styles.contactTextarea} value={contactForm.message} onChange={e => setContactForm({...contactForm, message: e.target.value})} required></textarea>
                 </div>
 
-                <button type="button" className={styles.submitBtn}>
-                  Send Message <Send size={18} />
+                <button type="submit" className={styles.submitBtn} disabled={contactStatus === 'loading'}>
+                  {contactStatus === 'loading' ? 'Sending...' : 'Send Message'} <Send size={18} />
                 </button>
+                {contactStatus === 'success' && <p style={{ color: 'green', marginTop: '10px' }}>Message sent successfully! A custom message has been delivered to your mail.</p>}
+                {contactStatus === 'error' && <p style={{ color: 'red', marginTop: '10px' }}>Failed to send message. Please try again.</p>}
               </form>
             </div>
           </div>
