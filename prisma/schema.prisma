@@ -41,6 +41,8 @@ model User {
   emailVerified DateTime?
   image         String?
   password      String?
+  dob           String?
+  phone         String?
   accounts      Account[]
   sessions      Session[]
   cartItems     CartItem[]

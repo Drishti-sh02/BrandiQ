@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import { useSession, signIn, signOut } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import NotebookLayout from '@/components/NotebookLayout';
@@ -132,7 +133,8 @@ export default function Home() {
       }
     }
   }, []);
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const { data: session, status } = useSession();
+  const isSignedIn = status === "authenticated";
   const [activeService, setActiveService] = useState(null);
   const [animationClass, setAnimationClass] = useState('');
 
@@ -188,8 +190,49 @@ export default function Home() {
     name: 'Creator',
     dob: '2000-01-01',
     email: 'user@example.com',
+    phone: '',
     bio: ''
   });
+  
+  const [isEditingProfile, setIsEditingProfile] = useState(false);
+
+  useEffect(() => {
+    if (status === "authenticated") {
+      fetch('/api/user/sync')
+        .then(res => res.json())
+        .then(data => {
+          if (data.user) {
+            if (data.user.cartItems && data.user.cartItems.length > 0) {
+              // we would map cart items back to actual product objects if we had the list,
+              // for simplicity we will just clear on unauth, wait.
+            }
+            setWishlistItems(data.user.wishlistItems ? data.user.wishlistItems.map(w => parseInt(w.productId)) : []);
+            // setDownloads(data.user.downloads || []); // Downloads are currently mocked
+            
+            const isFirstTime = !data.user.dob || !data.user.phone;
+            setProfileData({
+              name: data.user.name || '',
+              email: data.user.email || '',
+              dob: data.user.dob || '',
+              phone: data.user.phone || '',
+              profilePic: data.user.image || '/default-avatar.png',
+              bio: ''
+            });
+
+            // Redirect to profile page on login
+            setCurrentPage(6);
+            setActiveOverlay(null);
+            
+            if (isFirstTime) {
+              setIsEditingProfile(true);
+            }
+          }
+        });
+    } else if (status === "unauthenticated") {
+      setCartItems([]);
+      setWishlistItems([]);
+    }
+  }, [status]);
 
   // Contact Form State
   const [contactForm, setContactForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
@@ -885,7 +928,13 @@ export default function Home() {
                           <option value="Employee">Employee</option>
                         </select>
                       </div>
-                      <button className={styles.btnPrimary} onClick={() => setIsEditingProfile(false)} style={{ marginTop: '1rem', width: '100%', justifyContent: 'center' }}>
+                      <button className={styles.btnPrimary} onClick={() => {
+                        fetch('/api/user/sync', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ action: 'updateProfile', payload: { dob: profileData.dob, phone: profileData.phone } })
+                        }).then(() => setIsEditingProfile(false));
+                      }} style={{ marginTop: '1rem', width: '100%', justifyContent: 'center' }}>
                         SAVE CHANGES <span className={styles.btnArrow}>→</span>
                       </button>
                     </div>
@@ -908,10 +957,14 @@ export default function Home() {
                         <span style={{ fontSize: '1.2rem', color: '#111', fontWeight: '500' }}>{profileData.status}</span>
                       </div>
                       
-                      <button className={styles.btnSecondary} onClick={() => setIsEditingProfile(true)} style={{ marginTop: '1rem', width: 'fit-content' }}>
-                        EDIT PROFILE <span className={styles.btnArrow}>→</span>
-                      </button>
-                    </div>
+                      <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+                        <button className={styles.btnSecondary} onClick={() => setIsEditingProfile(true)} style={{ width: 'fit-content' }}>
+                          EDIT PROFILE <span className={styles.btnArrow}>→</span>
+                        </button>
+                        <button className={styles.btnSecondary} onClick={() => signOut()} style={{ width: 'fit-content', borderColor: '#d32f2f', color: '#d32f2f' }}>
+                          SIGN OUT
+                        </button>
+                      </div>
                   )}
                 </div>
               </div>
@@ -1052,7 +1105,7 @@ export default function Home() {
 
         <div className={styles.navRight}>
           {!isSignedIn ? (
-            <button className={styles.signInButton} onClick={() => setIsSignedIn(true)}>
+            <button className={styles.signInButton} onClick={() => signIn('google')}>
               SIGN IN
             </button>
           ) : (
@@ -1199,7 +1252,7 @@ export default function Home() {
                     </div>
                     <p className={styles.emptyStateMsg} style={{ marginTop: 0, color: '#111', fontWeight: 'bold' }}>Sign in to view your cart</p>
                     <p style={{ fontSize: '0.9rem', color: '#666', marginTop: '-0.5rem' }}>Access your saved items and checkout.</p>
-                    <button className={styles.btnPrimary} onClick={() => setIsSignedIn(true)} style={{ width: '100%', justifyContent: 'center' }}>SIGN IN TO CONTINUE</button>
+                    <button className={styles.btnPrimary} onClick={() => signIn('google')} style={{ width: '100%', justifyContent: 'center' }}>SIGN IN TO CONTINUE</button>
                   </div>
                 ) : cartItems.length === 0 ? (
                   <p className={styles.emptyStateMsg}>Your cart is empty.</p>
@@ -1295,7 +1348,7 @@ export default function Home() {
                     </div>
                     <p className={styles.emptyStateMsg} style={{ marginTop: 0, color: '#111', fontWeight: 'bold' }}>Sign in to view your wishlist</p>
                     <p style={{ fontSize: '0.9rem', color: '#666', marginTop: '-0.5rem' }}>Keep track of the products you love.</p>
-                    <button className={styles.btnPrimary} onClick={() => setIsSignedIn(true)} style={{ width: '100%', justifyContent: 'center' }}>SIGN IN TO CONTINUE</button>
+                    <button className={styles.btnPrimary} onClick={() => signIn('google')} style={{ width: '100%', justifyContent: 'center' }}>SIGN IN TO CONTINUE</button>
                   </div>
                 ) : wishlistItems.length === 0 ? (
                   <p className={styles.emptyStateMsg}>Your wishlist is empty.</p>
@@ -1330,7 +1383,7 @@ export default function Home() {
                     </div>
                     <p className={styles.emptyStateMsg} style={{ marginTop: 0, color: '#111', fontWeight: 'bold' }}>Sign in to view your downloads</p>
                     <p style={{ fontSize: '0.9rem', color: '#666', marginTop: '-0.5rem' }}>Access your purchased digital products.</p>
-                    <button className={styles.btnPrimary} onClick={() => setIsSignedIn(true)} style={{ width: '100%', justifyContent: 'center' }}>SIGN IN TO CONTINUE</button>
+                    <button className={styles.btnPrimary} onClick={() => signIn('google')} style={{ width: '100%', justifyContent: 'center' }}>SIGN IN TO CONTINUE</button>
                   </div>
                 ) : downloads.length === 0 ? (
                   <p className={styles.emptyStateMsg}>You haven&apos;t purchased any items yet.</p>
