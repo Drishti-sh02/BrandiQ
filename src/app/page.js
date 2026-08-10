@@ -1152,7 +1152,12 @@ export default function Home() {
             {activeOverlay === 'cart' && (
               <div className={styles.cartView}>
                 <h1 className={styles.storeSectionTitle}>Your Cart</h1>
-                {cartItems.length === 0 ? (
+                {!isSignedIn ? (
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginTop: '4rem', gap: '1rem' }}>
+                    <p className={styles.emptyStateMsg} style={{ marginTop: 0 }}>Please sign in to view your cart.</p>
+                    <button className={styles.btnPrimary} onClick={() => setIsSignedIn(true)}>SIGN IN</button>
+                  </div>
+                ) : cartItems.length === 0 ? (
                   <p className={styles.emptyStateMsg}>Your cart is empty.</p>
                 ) : (
                   <div className={styles.cartContentSplit}>
@@ -1239,30 +1244,42 @@ export default function Home() {
             {activeOverlay === 'wishlist' && (
               <div className={styles.wishlistView}>
                 <h1 className={styles.storeSectionTitle}>Your Wishlist</h1>
-                <div className={styles.productGrid}>
-                  {storeProducts.filter(p => wishlistItems.includes(p.id)).map(product => (
-                    <div key={product.id} className={styles.productStickyNote}>
-                      <div className={styles.stickyPin}></div>
-                      <img src={product.image} alt={product.title} className={styles.productImage} />
-                      <h3 className={styles.productTitle}>{product.title}</h3>
-                      <p className={styles.productPrice}>${product.price.toFixed(2)}</p>
-                      <div className={styles.productActions}>
-                        <button className={styles.removeBtn} onClick={() => toggleWishlist(product.id)}>Remove</button>
-                        <button className={styles.addToCartBtn} onClick={() => toggleCart(product)}>
-                          {cartItems.find(item => item.id === product.id) ? 'In Cart' : 'Add to Cart'}
-                        </button>
+                {!isSignedIn ? (
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginTop: '4rem', gap: '1rem' }}>
+                    <p className={styles.emptyStateMsg} style={{ marginTop: 0 }}>Please sign in to view your wishlist.</p>
+                    <button className={styles.btnPrimary} onClick={() => setIsSignedIn(true)}>SIGN IN</button>
+                  </div>
+                ) : (
+                  <div className={styles.productGrid}>
+                    {storeProducts.filter(p => wishlistItems.includes(p.id)).map(product => (
+                      <div key={product.id} className={styles.productStickyNote}>
+                        <div className={styles.stickyPin}></div>
+                        <img src={product.image} alt={product.title} className={styles.productImage} />
+                        <h3 className={styles.productTitle}>{product.title}</h3>
+                        <p className={styles.productPrice}>${product.price.toFixed(2)}</p>
+                        <div className={styles.productActions}>
+                          <button className={styles.removeBtn} onClick={() => toggleWishlist(product.id)}>Remove</button>
+                          <button className={styles.addToCartBtn} onClick={() => toggleCart(product)}>
+                            {cartItems.find(item => item.id === product.id) ? 'In Cart' : 'Add to Cart'}
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                  {wishlistItems.length === 0 && <p className={styles.emptyStateMsg}>Your wishlist is empty.</p>}
-                </div>
+                    ))}
+                    {wishlistItems.length === 0 && <p className={styles.emptyStateMsg}>Your wishlist is empty.</p>}
+                  </div>
+                )}
               </div>
             )}
 
             {activeOverlay === 'downloads' && (
               <div className={styles.downloadsView}>
                 <h1 className={styles.storeSectionTitle}>Your Downloads</h1>
-                {downloads.length === 0 ? (
+                {!isSignedIn ? (
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', marginTop: '4rem', gap: '1rem' }}>
+                    <p className={styles.emptyStateMsg} style={{ marginTop: 0 }}>Please sign in to view your downloads.</p>
+                    <button className={styles.btnPrimary} onClick={() => setIsSignedIn(true)}>SIGN IN</button>
+                  </div>
+                ) : downloads.length === 0 ? (
                   <p className={styles.emptyStateMsg}>You haven&apos;t purchased any items yet.</p>
                 ) : (
                   <div className={styles.productGrid}>
