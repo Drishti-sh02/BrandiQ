@@ -881,22 +881,6 @@ export default function Home() {
             </div>
 
             <div className={styles.productsContentRight} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%', maxWidth: '450px', marginBottom: '1rem' }}>
-                <button 
-                  className={styles.btnSecondary} 
-                  onClick={() => { setIsSignedIn(false); goToPage(0); }} 
-                  style={{ 
-                    borderColor: '#d32f2f', 
-                    color: '#d32f2f',
-                    padding: '0.4rem 0.8rem',
-                    fontSize: '0.9rem'
-                  }}
-                >
-                  <span className={styles.btnIcon}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d32f2f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" x2="9" y1="12" y2="12" /></svg>
-                  </span> SIGN OUT
-                </button>
-              </div>
               <div style={{ 
                 border: '2px solid #111', 
                 padding: '3rem', 
@@ -905,7 +889,7 @@ export default function Home() {
                 maxWidth: '450px',
                 width: '100%'
               }}>
-                <h3 className={styles.productsSubtitle} style={{ fontSize: '1.5rem', marginBottom: '2rem', borderBottom: '2px solid #111', paddingBottom: '1rem', letterSpacing: '1px', textTransform: 'uppercase' }}>Account Details</h3>
+                <h3 className={styles.productsSubtitle} style={{ fontSize: '1.5rem', marginBottom: '2rem', borderBottom: '2px solid #111', paddingBottom: '1rem', letterSpacing: '1px', textTransform: 'uppercase' }}>Profile Details</h3>
                 <div className={styles.productsBodyText}>
                   {isEditingProfile ? (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
@@ -1116,7 +1100,7 @@ export default function Home() {
               style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.6rem', borderRadius: '50%' }}
               title="Profile"
             >
-              <UserIcon size={20} color="#000" />
+              <UserIcon size={20} />
             </button>
           )}
         </div>
