@@ -1076,7 +1076,7 @@ export default function Home() {
           <img
             src="/logo2.png"
             alt="BrandeQ Logo"
-            style={{ height: '50px', marginRight: '1rem', cursor: 'default', objectFit: 'contain' }}
+            style={{ height: '50px', cursor: 'default', objectFit: 'contain' }}
             onClick={() => goToPage(0)}
           />
           {navItems.map((item) => (
