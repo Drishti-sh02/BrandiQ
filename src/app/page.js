@@ -286,7 +286,7 @@ export default function Home() {
       subtitle: 'Strategies for the Modern Web',
       currency: '€',
       price: 100.00,
-      image: '/DMM COVER.png',
+      image: '/DMM_COVER.png',
       comingSoon: true,
       description: (
         <>
@@ -302,7 +302,7 @@ export default function Home() {
       subtitle: 'Build a Thriving Solo Business',
       currency: '€',
       price: 95.00,
-      image: '/TFH COVER.png',
+      image: '/TFH_COVER.png',
       comingSoon: true,
       description: (
         <>
@@ -318,7 +318,7 @@ export default function Home() {
       subtitle: 'Designing Interfaces that Convert',
       currency: '€',
       price: 112.00,
-      image: '/UI UX COVER.png',
+      image: '/UI_UX_COVER.png',
       comingSoon: true,
       description: (
         <>
