@@ -19,7 +19,7 @@ const Footer = ({ goToPage, openService }) => (
           <button className={styles.socialIconBtn} aria-label="WhatsApp" onClick={() => window.open('https://wa.me/919971123820', '_blank')}>
             <FaWhatsapp size={18} />
           </button>
-          <button className={styles.socialIconBtn} aria-label="Email" onClick={() => window.location.href = 'mailto:info@brandeq.co.in'}>
+          <button className={styles.socialIconBtn} aria-label="Email" onClick={() => window.location.href = 'mailto:contact@brandeq.co.in'}>
             <Mail size={18} />
           </button>
           <button className={styles.socialIconBtn} aria-label="Call" onClick={() => window.location.href = 'tel:+919971123820'}>
@@ -76,7 +76,7 @@ const Footer = ({ goToPage, openService }) => (
             </div>
             <div className={styles.contactInfoText}>
               <strong>Email</strong>
-              <span>info@brandeq.co.in</span>
+              <span>contact@brandeq.co.in</span>
             </div>
           </div>
 
