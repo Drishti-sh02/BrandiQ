@@ -235,25 +235,13 @@ export default function Home() {
   const [contactForm, setContactForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [contactStatus, setContactStatus] = useState(null); // 'loading', 'success', 'error'
 
-  const handleContactSubmit = async (e) => {
+  const handleContactSubmit = (e) => {
     e.preventDefault();
-    setContactStatus('loading');
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(contactForm),
-      });
-      if (res.ok) {
-        setContactStatus('success');
-        setContactForm({ name: '', email: '', phone: '', subject: '', message: '' });
-      } else {
-        setContactStatus('error');
-      }
-    } catch (err) {
-      setContactStatus('error');
-    }
-    setTimeout(() => setContactStatus(null), 5000);
+    const { name, email, phone, subject, message } = contactForm;
+    const mailtoSubject = encodeURIComponent(`New Contact Form Submission: ${subject || 'General Inquiry'}`);
+    const mailtoBody = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nSubject: ${subject || 'N/A'}\n\nMessage:\n${message}`);
+    window.location.href = `mailto:contact@brandeq.co.in?subject=${mailtoSubject}&body=${mailtoBody}`;
+    setContactForm({ name: '', email: '', phone: '', subject: '', message: '' });
   };
   const storeProducts = [
     {
@@ -747,7 +735,7 @@ export default function Home() {
                   </div>
                   <div className={styles.contactInfoContent}>
                     <h4>Email Us</h4>
-                    <p>info@brandeq.co.in<br />We reply within 24 hours</p>
+                    <p>contact@brandeq.co.in<br />We reply within 24 hours</p>
                   </div>
                 </div>
 
@@ -820,11 +808,9 @@ export default function Home() {
                   <textarea placeholder="Your Message" className={styles.contactTextarea} value={contactForm.message} onChange={e => setContactForm({...contactForm, message: e.target.value})} required></textarea>
                 </div>
 
-                <button type="submit" className={styles.submitBtn} disabled={contactStatus === 'loading'}>
-                  {contactStatus === 'loading' ? 'Sending...' : 'Send Message'} <Send size={18} />
+                <button type="submit" className={styles.submitBtn}>
+                  Send Message <Send size={18} />
                 </button>
-                {contactStatus === 'success' && <p style={{ color: 'green', marginTop: '10px' }}>Message sent successfully! A custom message has been delivered to your mail.</p>}
-                {contactStatus === 'error' && <p style={{ color: 'red', marginTop: '10px' }}>Failed to send message. Please try again.</p>}
               </form>
             </div>
           </div>
