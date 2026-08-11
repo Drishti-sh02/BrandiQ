@@ -1179,7 +1179,8 @@ export default function Home() {
 
           <div className={styles.storeOverlayContent}>
             {activeOverlay === 'store' && (
-              <div className={styles.productGrid}>
+              <div style={{ display: 'flex', flexDirection: 'column', height: '100%', paddingBottom: '2rem' }}>
+                <div className={styles.productGrid}>
                 {filteredStoreProducts.map(product => (
                   <div
                     key={product.id}
@@ -1226,6 +1227,26 @@ export default function Home() {
                 {filteredStoreProducts.length === 0 && (
                   <p className={styles.emptyStateMsg}>No products found matching your search.</p>
                 )}
+              </div>
+                <div style={{
+                  border: '2px solid #d32f2f',
+                  padding: '1.5rem',
+                  marginTop: '3rem',
+                  backgroundColor: '#fff',
+                  display: 'flex',
+                  gap: '1rem',
+                  alignItems: 'center',
+                  boxShadow: '4px 4px 0px 0px #111'
+                }}>
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d32f2f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                  </svg>
+                  <p style={{ margin: 0, fontSize: '0.95rem', color: '#111', lineHeight: '1.5' }}>
+                    <strong style={{ color: '#d32f2f' }}>Disclaimer:</strong> BrandeQ digital products are provided for educational and informational purposes only. Products are for personal use and may not be copied, resold, or redistributed without permission. BrandeQ is not responsible for outcomes resulting from the use of its content.
+                  </p>
+                </div>
               </div>
             )}
 
