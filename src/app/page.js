@@ -224,7 +224,6 @@ export default function Home() {
               setCurrentPage(6);
               setIsEditingProfile(true);
             } else {
-              setCurrentPage(0);
               setIsEditingProfile(false);
             }
           }
