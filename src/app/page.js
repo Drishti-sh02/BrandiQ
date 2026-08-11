@@ -285,8 +285,8 @@ export default function Home() {
       title: 'Digital Marketing Mastery',
       subtitle: 'Strategies for the Modern Web',
       currency: '€',
-      price: 85.00,
-      image: '/CC COVER.png',
+      price: 100.00,
+      image: '/DMM COVER.png',
       comingSoon: true,
       description: (
         <>
