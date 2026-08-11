@@ -219,13 +219,7 @@ export default function Home() {
               bio: ''
             });
 
-            setActiveOverlay(null);
-            if (isFirstTime) {
-              setCurrentPage(6);
-              setIsEditingProfile(true);
-            } else {
-              setIsEditingProfile(false);
-            }
+            setIsEditingProfile(isFirstTime);
           }
         });
     } else if (status === "unauthenticated") {
