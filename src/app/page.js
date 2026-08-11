@@ -219,12 +219,13 @@ export default function Home() {
               bio: ''
             });
 
-            // Redirect to profile page on login
-            setCurrentPage(6);
             setActiveOverlay(null);
-            
             if (isFirstTime) {
+              setCurrentPage(6);
               setIsEditingProfile(true);
+            } else {
+              setCurrentPage(0);
+              setIsEditingProfile(false);
             }
           }
         });
@@ -1115,7 +1116,7 @@ export default function Home() {
               style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0.6rem', borderRadius: '50%' }}
               title="Profile"
             >
-              <UserIcon size={20} />
+              <UserIcon size={20} color="#000" />
             </button>
           )}
         </div>
