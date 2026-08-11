@@ -20,9 +20,9 @@ export async function POST(req) {
 
     // 1. Send inquiry to admin
     await transporter.sendMail({
-      from: `"${name}" <${process.env.SMTP_USER}>`, // Use authenticated user as sender to avoid spam filters
+      from: `"${name}" <${email}>`, // Note: This might be rejected by strict SMTP servers due to DMARC/SPF if you don't own the domain of the sender's email.
       replyTo: email,
-      to: 'info@brandeq.co.in',
+      to: 'contact@brandeq.co.in',
       subject: `New Contact Form Submission: ${subject || 'General Inquiry'}`,
       text: `
 Name: ${name}
@@ -59,14 +59,14 @@ ${message}
 
 Best regards,
 The BrandeQ Team
-info@brandeq.co.in
+contact@brandeq.co.in
       `,
       html: `
         <p>Hi ${name},</p>
         <p>Thank you for reaching out to us! We have received your message and will get back to you within 24 hours.</p>
         <p><strong>Your Message:</strong><br>${message.replace(/\n/g, '<br>')}</p>
         <br>
-        <p>Best regards,<br><strong>The BrandeQ Team</strong><br>info@brandeq.co.in</p>
+        <p>Best regards,<br><strong>The BrandeQ Team</strong><br>contact@brandeq.co.in</p>
       `,
     });
 
