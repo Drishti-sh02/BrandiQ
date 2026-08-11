@@ -301,8 +301,8 @@ export default function Home() {
       title: 'The Freelancer\'s Handbook',
       subtitle: 'Build a Thriving Solo Business',
       currency: '€',
-      price: 60.00,
-      image: '/TWO2025 COVER.png',
+      price: 95.00,
+      image: '/TFH COVER.png',
       comingSoon: true,
       description: (
         <>
