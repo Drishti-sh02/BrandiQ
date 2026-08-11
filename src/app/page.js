@@ -317,8 +317,8 @@ export default function Home() {
       title: 'UI/UX Principles',
       subtitle: 'Designing Interfaces that Convert',
       currency: '€',
-      price: 95.00,
-      image: '/CC COVER.png',
+      price: 112.00,
+      image: '/UI UX COVER.png',
       comingSoon: true,
       description: (
         <>
