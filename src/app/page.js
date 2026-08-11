@@ -280,6 +280,54 @@ export default function Home() {
       ],
       perfectFor: ['Computer Science Students', 'Beginners in Cloud Computing', 'Software Developers', 'IT Professionals', 'DevOps Learners', 'Engineering Students', 'Certification Aspirants']
     },
+    {
+      id: 103,
+      title: 'Digital Marketing Mastery',
+      subtitle: 'Strategies for the Modern Web',
+      currency: '€',
+      price: 85.00,
+      image: '/CC COVER.png',
+      comingSoon: true,
+      description: (
+        <>
+          <p className={styles.pdDescription}>A complete guide to mastering digital marketing. Learn SEO, PPC, and content strategies.</p>
+          <p className={styles.pdDescription}>Coming soon...</p>
+        </>
+      ),
+      perfectFor: ['Marketers', 'Entrepreneurs', 'Students']
+    },
+    {
+      id: 104,
+      title: 'The Freelancer\'s Handbook',
+      subtitle: 'Build a Thriving Solo Business',
+      currency: '€',
+      price: 60.00,
+      image: '/TWO2025 COVER.png',
+      comingSoon: true,
+      description: (
+        <>
+          <p className={styles.pdDescription}>Everything you need to start, manage, and scale a successful freelance business.</p>
+          <p className={styles.pdDescription}>Coming soon...</p>
+        </>
+      ),
+      perfectFor: ['Freelancers', 'Creatives', 'Consultants']
+    },
+    {
+      id: 105,
+      title: 'UI/UX Principles',
+      subtitle: 'Designing Interfaces that Convert',
+      currency: '€',
+      price: 95.00,
+      image: '/CC COVER.png',
+      comingSoon: true,
+      description: (
+        <>
+          <p className={styles.pdDescription}>Learn how to design digital experiences that look great, function flawlessly, and convert users.</p>
+          <p className={styles.pdDescription}>Coming soon...</p>
+        </>
+      ),
+      perfectFor: ['Designers', 'Product Managers', 'Developers']
+    }
   ];
 
   const servicesData = [
@@ -1199,6 +1247,14 @@ export default function Home() {
                         >
                           Purchased
                         </button>
+                      ) : product.comingSoon ? (
+                        <button
+                          className={styles.addToCartBtn}
+                          disabled
+                          style={{ backgroundColor: '#e0e0e0', color: '#888', cursor: 'not-allowed', borderColor: '#e0e0e0' }}
+                        >
+                          Coming Soon
+                        </button>
                       ) : (
                         <button
                           className={styles.addToCartBtn}
@@ -1430,6 +1486,24 @@ export default function Home() {
                           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20 6 9 17 4 12" /></svg>
                           PURCHASED - GO TO DOWNLOADS
                         </button>
+                      ) : selectedProduct.comingSoon ? (
+                        <>
+                          <button
+                            className={styles.pdBuyNow}
+                            disabled
+                            style={{ backgroundColor: '#e0e0e0', color: '#888', cursor: 'not-allowed', borderColor: '#e0e0e0' }}
+                          >
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            COMING SOON
+                          </button>
+                          <button
+                            className={styles.pdAddWishlist}
+                            onClick={(e) => { e.stopPropagation(); toggleWishlist(selectedProduct.id); }}
+                          >
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>
+                            {wishlistItems.includes(selectedProduct.id) ? 'REMOVE FROM WISHLIST' : 'ADD TO WISHLIST'}
+                          </button>
+                        </>
                       ) : (
                         <>
                           <button
