@@ -20,7 +20,7 @@ export async function POST(req) {
 
     // 1. Send inquiry to admin
     await transporter.sendMail({
-      from: `"${name}" <${email}>`, // Note: This might be rejected by strict SMTP servers due to DMARC/SPF if you don't own the domain of the sender's email.
+      from: `"${name}" <${process.env.SMTP_USER}>`, // Use authenticated user to avoid SMTP rejection, replyTo handles replies
       replyTo: email,
       to: 'contact@brandeq.co.in',
       subject: `New Contact Form Submission: ${subject || 'General Inquiry'}`,
