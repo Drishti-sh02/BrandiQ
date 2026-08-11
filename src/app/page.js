@@ -789,7 +789,7 @@ export default function Home() {
 
                 <div className={styles.inputWrapper}>
                   <Phone size={18} className={styles.inputIcon} />
-                  <input type="text" placeholder="Your Phone (Optional)" className={styles.contactInput} value={contactForm.phone} onChange={e => setContactForm({...contactForm, phone: e.target.value})} />
+                  <input type="text" placeholder="Your Phone" className={styles.contactInput} value={contactForm.phone} onChange={e => setContactForm({...contactForm, phone: e.target.value})} required />
                 </div>
 
                 <div className={styles.inputWrapper}>
