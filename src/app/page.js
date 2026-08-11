@@ -292,10 +292,6 @@ export default function Home() {
       ],
       perfectFor: ['Computer Science Students', 'Beginners in Cloud Computing', 'Software Developers', 'IT Professionals', 'DevOps Learners', 'Engineering Students', 'Certification Aspirants']
     },
-    { id: 103, title: 'Hand-drawn Icon Set', price: 15.50, image: '/prod-icons.png' },
-    { id: 104, title: 'Custom Typography', price: 22.00, image: '/prod-font.png' },
-    { id: 105, title: 'Web Dev Blueprint', price: 99.00, image: '/service-2.png' },
-    { id: 106, title: 'Brand Identity Guide', price: 35.00, image: '/service-4.png' }
   ];
 
   const servicesData = [
@@ -1080,7 +1076,7 @@ export default function Home() {
           <img
             src="/logo2.png"
             alt="BrandeQ Logo"
-            style={{ height: '30px', marginRight: '1rem', cursor: 'default', objectFit: 'contain' }}
+            style={{ height: '50px', marginRight: '1rem', cursor: 'default', objectFit: 'contain' }}
             onClick={() => goToPage(0)}
           />
           {navItems.map((item) => (
