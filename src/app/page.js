@@ -219,7 +219,7 @@ export default function Home() {
               bio: ''
             });
 
-            setIsEditingProfile(isFirstTime);
+            setIsEditingProfile(false);
           }
         });
     } else if (status === "unauthenticated") {
