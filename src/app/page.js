@@ -203,11 +203,14 @@ export default function Home() {
         .then(data => {
           if (data.user) {
             if (data.user.cartItems && data.user.cartItems.length > 0) {
-              // we would map cart items back to actual product objects if we had the list,
-              // for simplicity we will just clear on unauth, wait.
+              const dbCartIds = data.user.cartItems.map(c => parseInt(c.productId));
+              setCartItems(storeProducts.filter(p => dbCartIds.includes(p.id)));
             }
             setWishlistItems(data.user.wishlistItems ? data.user.wishlistItems.map(w => parseInt(w.productId)) : []);
-            // setDownloads(data.user.downloads || []); // Downloads are currently mocked
+            if (data.user.downloads && data.user.downloads.length > 0) {
+              const dbDownloadIds = data.user.downloads.map(d => parseInt(d.productId));
+              setDownloads(storeProducts.filter(p => dbDownloadIds.includes(p.id)));
+            }
             
             const isFirstTime = !data.user.dob || !data.user.phone;
             setProfileData({
@@ -954,19 +957,29 @@ export default function Home() {
   ];
 
   const toggleWishlist = (productId) => {
+    let newWishlist;
     if (wishlistItems.includes(productId)) {
-      setWishlistItems(wishlistItems.filter(id => id !== productId));
+      newWishlist = wishlistItems.filter(id => id !== productId);
     } else {
-      setWishlistItems([...wishlistItems, productId]);
+      newWishlist = [...wishlistItems, productId];
+    }
+    setWishlistItems(newWishlist);
+    if (status === 'authenticated') {
+      fetch('/api/user/sync', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'updateWishlist', payload: newWishlist }) });
     }
   };
 
   const toggleCart = (product) => {
+    let newCart;
     const exists = cartItems.find(item => item.id === product.id);
     if (exists) {
-      setCartItems(cartItems.filter(item => item.id !== product.id));
+      newCart = cartItems.filter(item => item.id !== product.id);
     } else {
-      setCartItems([...cartItems, product]);
+      newCart = [...cartItems, product];
+    }
+    setCartItems(newCart);
+    if (status === 'authenticated') {
+      fetch('/api/user/sync', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'updateCart', payload: newCart }) });
     }
   };
 
