@@ -16,13 +16,13 @@ const Footer = ({ goToPage, openService }) => (
         <img src="/logo.png" alt="BRANDEQ" className={styles.footerLogo} />
         <p>Premium digital products designed to inspire, educate, and help you grow. One purchase, lifetime value.</p>
         <div className={styles.footerSocials}>
-          <button className={styles.socialIconBtn} aria-label="WhatsApp" onClick={() => window.open('https://wa.me/919971123820', '_blank')}>
+          <button className={styles.socialIconBtn} aria-label="WhatsApp" onClick={() => window.open('https://wa.me/919821607136', '_blank')}>
             <FaWhatsapp size={18} />
           </button>
           <button className={styles.socialIconBtn} aria-label="Email" onClick={() => window.location.href = 'mailto:contact@brandeq.co.in'}>
             <Mail size={18} />
           </button>
-          <button className={styles.socialIconBtn} aria-label="Call" onClick={() => window.location.href = 'tel:+919971123820'}>
+          <button className={styles.socialIconBtn} aria-label="Call" onClick={() => window.location.href = 'tel:+919821607136'}>
             <Phone size={18} />
           </button>
         </div>
@@ -56,7 +56,7 @@ const Footer = ({ goToPage, openService }) => (
             </div>
             <div className={styles.contactInfoText}>
               <strong>Headquarters</strong>
-              <span>123 Business Street,<br />New Delhi, India 110001</span>
+              <span>106 A, Kakrola,<br />South West Delhi, New Delhi-110078</span>
             </div>
           </div>
 
@@ -140,7 +140,7 @@ export default function Home() {
 
   // Store State
   const [activeOverlay, setActiveOverlay] = useState(null); // 'store', 'cart', 'wishlist', 'downloads', 'product_details'
-  
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const path = window.location.pathname;
@@ -193,7 +193,7 @@ export default function Home() {
     phone: '',
     bio: ''
   });
-  
+
   const [isEditingProfile, setIsEditingProfile] = useState(false);
 
   useEffect(() => {
@@ -211,7 +211,7 @@ export default function Home() {
               const dbDownloadIds = data.user.downloads.map(d => parseInt(d.productId));
               setDownloads(storeProducts.filter(p => dbDownloadIds.includes(p.id)));
             }
-            
+
             const isFirstTime = !data.user.dob || !data.user.phone;
             setProfileData({
               name: data.user.name || '',
@@ -249,7 +249,7 @@ export default function Home() {
       title: 'The World of 2025',
       subtitle: 'AI, Robots & Human Civilization',
       currency: '€',
-      price: 120.00,
+      price: 105.00,
       image: '/TWO2025 COVER.png',
       description: (
         <>
@@ -266,7 +266,7 @@ export default function Home() {
       title: 'Cloud Computing Blueprint',
       subtitle: 'A Beginner\'s Guide to Cloud Technologies, Architecture & Real-World Applications',
       currency: '€',
-      price: 110,
+      price: 125,
       image: '/CC COVER.png',
       description: (
         <>
@@ -827,22 +827,22 @@ export default function Home() {
                 <div className={styles.formRow}>
                   <div className={styles.inputWrapper}>
                     <UserIcon size={18} className={styles.inputIcon} />
-                    <input type="text" placeholder="Your Name" className={styles.contactInput} value={contactForm.name} onChange={e => setContactForm({...contactForm, name: e.target.value})} required />
+                    <input type="text" placeholder="Your Name" className={styles.contactInput} value={contactForm.name} onChange={e => setContactForm({ ...contactForm, name: e.target.value })} required />
                   </div>
                   <div className={styles.inputWrapper}>
                     <Mail size={18} className={styles.inputIcon} />
-                    <input type="email" placeholder="Your Email" className={styles.contactInput} value={contactForm.email} onChange={e => setContactForm({...contactForm, email: e.target.value})} required />
+                    <input type="email" placeholder="Your Email" className={styles.contactInput} value={contactForm.email} onChange={e => setContactForm({ ...contactForm, email: e.target.value })} required />
                   </div>
                 </div>
 
                 <div className={styles.inputWrapper}>
                   <Phone size={18} className={styles.inputIcon} />
-                  <input type="text" placeholder="Your Phone" className={styles.contactInput} value={contactForm.phone} onChange={e => setContactForm({...contactForm, phone: e.target.value})} required />
+                  <input type="text" placeholder="Your Phone" className={styles.contactInput} value={contactForm.phone} onChange={e => setContactForm({ ...contactForm, phone: e.target.value })} required />
                 </div>
 
                 <div className={styles.inputWrapper}>
                   <Tag size={18} className={styles.inputIcon} />
-                  <select className={styles.contactSelect} value={contactForm.subject} onChange={e => setContactForm({...contactForm, subject: e.target.value})} required>
+                  <select className={styles.contactSelect} value={contactForm.subject} onChange={e => setContactForm({ ...contactForm, subject: e.target.value })} required>
                     <option value="" disabled>Subject</option>
                     <option value="general">General Inquiry</option>
                     <option value="support">Support</option>
@@ -853,7 +853,7 @@ export default function Home() {
 
                 <div className={styles.inputWrapper}>
                   <PenLine size={18} className={styles.inputIcon} style={{ top: '1rem' }} />
-                  <textarea placeholder="Your Message" className={styles.contactTextarea} value={contactForm.message} onChange={e => setContactForm({...contactForm, message: e.target.value})} required></textarea>
+                  <textarea placeholder="Your Message" className={styles.contactTextarea} value={contactForm.message} onChange={e => setContactForm({ ...contactForm, message: e.target.value })} required></textarea>
                 </div>
 
                 <button type="submit" className={styles.submitBtn}>
@@ -907,9 +907,9 @@ export default function Home() {
             </div>
 
             <div className={styles.productsContentRight} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <div style={{ 
-                border: '2px solid #111', 
-                padding: '3rem', 
+              <div style={{
+                border: '2px solid #111',
+                padding: '3rem',
                 backgroundColor: '#fff',
                 boxShadow: '4px 4px 0px 0px #111',
                 maxWidth: '450px',
@@ -966,7 +966,7 @@ export default function Home() {
                         <span style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 'bold', color: '#666', marginBottom: '0.3rem' }}>Status</span>
                         <span style={{ fontSize: '1.2rem', color: '#111', fontWeight: '500' }}>{profileData.status}</span>
                       </div>
-                      
+
                       <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
                         <button className={styles.btnSecondary} onClick={() => setIsEditingProfile(true)} style={{ width: 'fit-content' }}>
                           EDIT PROFILE <span className={styles.btnArrow}>→</span>
@@ -1015,7 +1015,7 @@ export default function Home() {
 
   const handlePayNow = async () => {
     if (cartItems.length === 0) return;
-    
+
     setIsCheckingOut(true);
     try {
       const res = await fetch('/api/checkout', {
@@ -1023,9 +1023,9 @@ export default function Home() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ cartItems }),
       });
-      
+
       const data = await res.json();
-      
+
       if (data.url) {
         window.location.href = data.url; // Redirect to PayPal
       } else {
@@ -1058,7 +1058,7 @@ export default function Home() {
             <svg className={styles.loaderDashedCircle} viewBox="0 0 100 100">
               <circle cx="50" cy="50" r="48" fill="none" stroke="#999" strokeWidth="0.4" strokeDasharray="2 3" />
             </svg>
-            
+
             <div className={`${styles.loaderFloatingIcon} ${styles.loaderIconTop}`}>
               <CloudDownload size={28} strokeWidth={1.2} />
             </div>
@@ -1215,61 +1215,61 @@ export default function Home() {
             {activeOverlay === 'store' && (
               <div style={{ display: 'flex', flexDirection: 'column', height: '100%', paddingBottom: '2rem' }}>
                 <div className={styles.productGrid}>
-                {filteredStoreProducts.map(product => (
-                  <div
-                    key={product.id}
-                    className={styles.productStickyNote}
-                    onClick={() => {
-                      setSelectedProduct(product);
-                      setPreviewImage(product.image);
-                      setActiveOverlay('product_details');
-                    }}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    <div className={styles.stickyPin}></div>
-                    <img src={product.image} alt={product.title} className={styles.productImage} />
-                    <h3 className={styles.productTitle}>{product.title}</h3>
-                    <p className={styles.productPrice}>€{product.price.toFixed(2)}</p>
-                    <div className={styles.productActions}>
-                      {!downloads.find(d => d.id === product.id) && (
-                        <button
-                          className={`${styles.iconBtn} ${wishlistItems.includes(product.id) ? styles.activeHeart : ''}`}
-                          onClick={(e) => { e.stopPropagation(); toggleWishlist(product.id); }}
-                        >
-                          {wishlistItems.includes(product.id) ? '❤️' : '🤍'}
-                        </button>
-                      )}
-                      {downloads.find(d => d.id === product.id) ? (
-                        <button
-                          className={styles.addToCartBtn}
-                          onClick={(e) => { e.stopPropagation(); setActiveOverlay('downloads'); }}
-                          style={{ backgroundColor: '#2e7d32', color: '#fff', borderColor: '#2e7d32' }}
-                        >
-                          Purchased
-                        </button>
-                      ) : product.comingSoon ? (
-                        <button
-                          className={styles.addToCartBtn}
-                          disabled
-                          style={{ backgroundColor: '#e0e0e0', color: '#888', cursor: 'not-allowed', borderColor: '#e0e0e0' }}
-                        >
-                          Coming Soon
-                        </button>
-                      ) : (
-                        <button
-                          className={styles.addToCartBtn}
-                          onClick={(e) => { e.stopPropagation(); toggleCart(product); }}
-                        >
-                          {cartItems.find(item => item.id === product.id) ? 'Remove' : 'Add to Cart'}
-                        </button>
-                      )}
+                  {filteredStoreProducts.map(product => (
+                    <div
+                      key={product.id}
+                      className={styles.productStickyNote}
+                      onClick={() => {
+                        setSelectedProduct(product);
+                        setPreviewImage(product.image);
+                        setActiveOverlay('product_details');
+                      }}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <div className={styles.stickyPin}></div>
+                      <img src={product.image} alt={product.title} className={styles.productImage} />
+                      <h3 className={styles.productTitle}>{product.title}</h3>
+                      <p className={styles.productPrice}>€{product.price.toFixed(2)}</p>
+                      <div className={styles.productActions}>
+                        {!downloads.find(d => d.id === product.id) && (
+                          <button
+                            className={`${styles.iconBtn} ${wishlistItems.includes(product.id) ? styles.activeHeart : ''}`}
+                            onClick={(e) => { e.stopPropagation(); toggleWishlist(product.id); }}
+                          >
+                            {wishlistItems.includes(product.id) ? '❤️' : '🤍'}
+                          </button>
+                        )}
+                        {downloads.find(d => d.id === product.id) ? (
+                          <button
+                            className={styles.addToCartBtn}
+                            onClick={(e) => { e.stopPropagation(); setActiveOverlay('downloads'); }}
+                            style={{ backgroundColor: '#2e7d32', color: '#fff', borderColor: '#2e7d32' }}
+                          >
+                            Purchased
+                          </button>
+                        ) : product.comingSoon ? (
+                          <button
+                            className={styles.addToCartBtn}
+                            disabled
+                            style={{ backgroundColor: '#e0e0e0', color: '#888', cursor: 'not-allowed', borderColor: '#e0e0e0' }}
+                          >
+                            Coming Soon
+                          </button>
+                        ) : (
+                          <button
+                            className={styles.addToCartBtn}
+                            onClick={(e) => { e.stopPropagation(); toggleCart(product); }}
+                          >
+                            {cartItems.find(item => item.id === product.id) ? 'Remove' : 'Add to Cart'}
+                          </button>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                ))}
-                {filteredStoreProducts.length === 0 && (
-                  <p className={styles.emptyStateMsg}>No products found matching your search.</p>
-                )}
-              </div>
+                  ))}
+                  {filteredStoreProducts.length === 0 && (
+                    <p className={styles.emptyStateMsg}>No products found matching your search.</p>
+                  )}
+                </div>
                 <div style={{
                   border: '2px solid #d32f2f',
                   padding: '1.5rem',
@@ -1493,7 +1493,7 @@ export default function Home() {
                             disabled
                             style={{ backgroundColor: '#e0e0e0', color: '#888', cursor: 'not-allowed', borderColor: '#e0e0e0' }}
                           >
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
                             COMING SOON
                           </button>
                           <button
