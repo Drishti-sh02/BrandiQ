@@ -56,7 +56,7 @@ const Footer = ({ goToPage, openService }) => (
             </div>
             <div className={styles.contactInfoText}>
               <strong>Headquarters</strong>
-              <span>106 A, Kakrola,<br />South West Delhi, New Delhi-110078</span>
+              <span>106 A, Kakrola, South West Delhi<br />New Delhi, India - 110078</span>
             </div>
           </div>
 
@@ -66,7 +66,7 @@ const Footer = ({ goToPage, openService }) => (
             </div>
             <div className={styles.contactInfoText}>
               <strong>Phone</strong>
-              <span>+91 9971123820</span>
+              <span>+91 9821607136</span>
             </div>
           </div>
 
@@ -793,7 +793,7 @@ export default function Home() {
                   </div>
                   <div className={styles.contactInfoContent}>
                     <h4>Call Us</h4>
-                    <p>+91 9971123820<br />Mon - Fri, 10:00 AM - 6:00 PM</p>
+                    <p>+91 9821607136<br />Mon - Fri, 10:00 AM - 6:00 PM</p>
                   </div>
                 </div>
 
@@ -803,7 +803,7 @@ export default function Home() {
                   </div>
                   <div className={styles.contactInfoContent}>
                     <h4>Our Office</h4>
-                    <p>123 Business Street, Suite 100<br />New Delhi, India - 110001</p>
+                    <p>106 A, Kakrola, South West Delhi<br />New Delhi, India - 110078</p>
                   </div>
                 </div>
 
